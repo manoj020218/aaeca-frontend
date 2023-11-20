@@ -1,0 +1,7 @@
+{
+  "name": "aaeca",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
