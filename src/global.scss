@@ -24,3 +24,22 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+
+@import "swiper/css";
+@import "swiper/css/effect-cards";
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+// .swiper-slide {
+//   // display: flex;
+//   // align-items: center;
+//   // justify-content: center;
+// }
+
+.swiper-slide {
+  background-color: var(--ion-color-light);
+}

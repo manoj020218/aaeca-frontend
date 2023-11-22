@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: AluminiPage
+  },
+  {
+    path: 'news',
+    loadChildren: () => import('./news/news.module').then( m => m.NewsPageModule)
+  },
+  {
+    path: 'obituary',
+    loadChildren: () => import('./obituary/obituary.module').then( m => m.ObituaryPageModule)
   }
 ];
 
