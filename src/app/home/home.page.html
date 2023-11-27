@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border" > 
+<!-- <ion-header class="ion-no-border" > 
 
   <ion-toolbar color="primary">     
     <ion-title class="ion-text-center">
@@ -8,35 +8,273 @@
 
     <!-- <ion-avatar>
       <img  src="assets/logo/logo_avatar.png" />
-    </ion-avatar> -->
+    </ion-avatar> --
 
 
     <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
+      <!-- <ion-menu-button></ion-menu-button> --
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content class="ion-padding" color="light" [fullscreen]="true">
+  <div class="hero"></div>
+
   <div class="banner">
     <ion-img src="assets/logo/150H350W.png" alt="Alumini Association of Engineering College Ajmer"></ion-img>
 
   </div>
 
   <div class="body">
+    <h2 class="heading">
+      Alumni Association
+    </h2>
+    <p class="htext">
+      Engineering College Ajmer prides itself on the success of its alumni. After successfully completing their academic years at the institute, our alumni went on to expand their wings and reached new heights, be it as entrepreneurs, industrialists, academicians, researchers, social cause champions, bureaucrats etc. We have had many notable alumni who have received national and international recognition in their respective professional fields. With more than xxxxx alumni spanning across the globe, they have been instrumental in strengthening the image of Engineering College Ajmer.
+Though their dreams took them in new directions, ECA alumni have always felt connected to their alma mater and hence, they have over the years nurtured the institute through their generous contributions. The spirit of Giving Back is reflected in every corner of the institute be it infrastructure development, scholarships, especially to girl students, financial support to various hobby clubs, set-up of different R&D labs and faculty chairs, donations to various community development sectors, environment etc.
+Established in (date of establishment ..xx-xx-xxxx), Alumni Association of ECA is an independent registered body of more than xxxx alumni spanning across the world. Its mission is –
+•	To actively promote interaction & networking among its alumni.
+•	To be a pillar of support in their hour of need.
+•	To help realize the notion of Giving Back to the Alma mater.
+•	To function on a charitable basis, and to run the Association on ‘no profit-no loss’ basis’.
+•	To contribute to the vision and strengthen the image of ECA at national & international level.
+Alumni in different parts of the world have formed Chapters of their associations. These Chapters work actively towards promoting networking among themselves and with the institute as well. Organizing alumni Reunions is an integral part of the Alumni Association of ECA.
+
+    </p>
 
   </div>
   <div class="events">
+    <h2 class="heading">
+      News
+    </h2>
+
+    
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-sm="4">
+          <ion-card >
+            <img src="assets/logo/aaeca_logo.jpg" />
+            <ion-card-header>
+              <ion-card-title>Madison, WI</ion-card-title>
+              <ion-card-subtitle>Manoj Jain || 12-05-2023</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content (click)="hide()">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+              when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+              It has survived not only five centuries
+            </ion-card-content>
+            <p>
+              <ion-text class="ion-margin-start" color="medium">Short by Date</ion-text>
+            </p>
+            <ion-toolbar class="tabs" *ngIf="show">
+              <ion-tabs>
+                <!-- Tab bar -->
+                <ion-tab-bar slot="bottom">
+                  <ion-tab-button (click)="share()">
+                    <ion-icon name="help-outline"></ion-icon>
+                    <ion-label>Relevance</ion-label>
+                  </ion-tab-button>
+              
+                  <ion-tab-button (click)="share()">
+                    <ion-icon name="share-outline" color="primary"></ion-icon>
+                    <ion-label>Share</ion-label>
+                  </ion-tab-button>
+              
+                  <ion-tab-button (click)="share()">
+                    <ion-icon name="bookmark-outline" color="primary"></ion-icon>
+                    <ion-label>Bookmark</ion-label>
+                  </ion-tab-button>
+                </ion-tab-bar>
+              </ion-tabs>
+            </ion-toolbar>
+          </ion-card>   
+           
+        </ion-col>
+        <ion-col size="12" size-sm="4">
+          <ion-card >
+            <img src="assets/logo/aaeca_logo.jpg" />
+            <ion-card-header>
+              <ion-card-title>Madison, WI</ion-card-title>
+              <ion-card-subtitle>Manoj Jain || 12-05-2023</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content (click)="hide()">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+              when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+              It has survived not only five centuries
+            </ion-card-content>
+            <p>
+              <ion-text class="ion-margin-start" color="medium">Short by Date</ion-text>
+            </p>
+            <ion-toolbar class="tabs" *ngIf="show">
+              <ion-tabs>
+                <!-- Tab bar -->
+                <ion-tab-bar slot="bottom">
+                  <ion-tab-button (click)="share()">
+                    <ion-icon name="help-outline"></ion-icon>
+                    <ion-label>Relevance</ion-label>
+                  </ion-tab-button>
+              
+                  <ion-tab-button (click)="share()">
+                    <ion-icon name="share-outline" color="primary"></ion-icon>
+                    <ion-label>Share</ion-label>
+                  </ion-tab-button>
+              
+                  <ion-tab-button (click)="share()">
+                    <ion-icon name="bookmark-outline" color="primary"></ion-icon>
+                    <ion-label>Bookmark</ion-label>
+                  </ion-tab-button>
+                </ion-tab-bar>
+              </ion-tabs>
+            </ion-toolbar>
+          </ion-card>   
+          
+        </ion-col>
+        <ion-col size="12" size-sm="4">
+          <ion-card >
+            <img src="assets/logo/aaeca_logo.jpg" />
+            <ion-card-header>
+              <ion-card-title>Madison, WI</ion-card-title>
+              <ion-card-subtitle>Manoj Jain || 12-05-2023</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content (click)="hide()">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+              when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+              It has survived not only five centuries
+            </ion-card-content>
+            <p>
+              <ion-text class="ion-margin-start" color="medium">Short by Date</ion-text>
+            </p>
+            <ion-toolbar class="tabs" *ngIf="show">
+              <ion-tabs>
+                <!-- Tab bar -->
+                <ion-tab-bar slot="bottom">
+                  <ion-tab-button (click)="share()">
+                    <ion-icon name="help-outline"></ion-icon>
+                    <ion-label>Relevance</ion-label>
+                  </ion-tab-button>
+              
+                  <ion-tab-button (click)="share()">
+                    <ion-icon name="share-outline" color="primary"></ion-icon>
+                    <ion-label>Share</ion-label>
+                  </ion-tab-button>
+              
+                  <ion-tab-button (click)="share()">
+                    <ion-icon name="bookmark-outline" color="primary"></ion-icon>
+                    <ion-label>Bookmark</ion-label>
+                  </ion-tab-button>
+                </ion-tab-bar>
+              </ion-tabs>
+            </ion-toolbar>
+          </ion-card>   
+           
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+  <div class="reunion">
+    <h2>Glimps Of Reunion</h2>
+    <div class="banner">
+      <ion-img src="assets/logo/150H350W.png" alt="Alumini Association of Engineering College Ajmer"></ion-img>
+  
+    </div>
 
   </div>
 
   <div class="contactus">
+    <h2 class="contact">Contact Us</h2>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-sm="6">
+
+        </ion-col>
+
+        <ion-col size="12" size-sm="6">
+          <h3>We Are Located at</h3>
+          <p> Alumni Association office <br>
+                Room no XXX <br>
+                 ECA Ajmer <br>
+                  email: aaeca&#64;aaeca.com<br>
+                  Phone: +917891012342 </p>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
   </div>
 
+  <div>
+    <ion-list class="horizontal-list">
+        <ion-item-divider color="light">Share through social media</ion-item-divider>
+         <ion-item>
+            <button
+               class="button"  
+               ion-button 
+               icon-right 
+               block 
+               padding-vertical 
+               color="primary" 
+               (click)="shareViaFacebook()">
+                   
+                  <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>
+            </button>
+         </ion-item>
+  
+  
+         <ion-item>
+            <button
+               class="button"  
+               ion-button 
+               icon-right 
+               block 
+               padding-vertical 
+               color="primary" 
+               (click)="shareViaInstagram()">
+                 
+                  <ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon>
+            </button>
+         </ion-item>
+  
+  
+         <ion-item>
+            <button 
+               class="button"  
+               ion-button 
+               icon-right 
+               block 
+               padding-vertical 
+               color="primary" 
+               (click)="shareViaTwitter()">
+                   
+                  <ion-icon ios="logo-twitter" md="logo-twitter"></ion-icon>
+            </button>
+         </ion-item>
+  
+  
+         <ion-item>
+            <button
+               class="button"  
+               ion-button 
+               icon-right 
+               block 
+               padding-vertical 
+               color="primary" 
+               (click)="sharePicker()">
+                   
+                  <ion-icon ios="ios-share" md="md-share"></ion-icon>
+            </button>
+         </ion-item>
+        </ion-list>
+  </div>
 
    
 </ion-content>
 <ion-footer class="footer">
+  
+
   
 </ion-footer>

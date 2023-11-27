@@ -25,3 +25,23 @@
 #container a {
   text-decoration: none;
 }
+
+.hero {
+  background-image: url('https://images.unsplash.com/photo-1472851294608-062f824d29cc');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 30vh;
+  width: 100%;
+}
+
+.horizontal-list {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.horizontal-list ion-item {
+  flex: 0 0 auto;
+  width: 100px; /* Set a fixed width or adjust as needed */
+}

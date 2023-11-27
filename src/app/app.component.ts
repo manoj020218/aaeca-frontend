@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController, Platform } from '@ionic/angular';
 import { register } from 'swiper/element/bundle';
  
 register();
@@ -38,10 +39,13 @@ export class AppComponent {
   mobile: string | undefined;
   username: any;
   image: any;
+title: string|undefined;
 
   
   constructor(
     private router: Router,
+    private menuCtrl: MenuController, 
+    private plt: Platform
   ) {
     this.mobile ="7891012342";
     this.loggeduser ="manoj020218@gmail.com";
@@ -53,5 +57,29 @@ export class AppComponent {
     localStorage.removeItem('token');
     this.router.navigate(['/home']);
   }
+
+  ngOnInit() {
+    const width = this.plt.width();
+    this.toggleMenu(width);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  private onResize(event: { target: { innerWidth: any; }; }) {
+    const newWidth = event.target.innerWidth;
+    this.toggleMenu(newWidth);
+  }
+
+  toggleMenu(width: number) {
+    if (width > 768) {
+      this.menuCtrl.enable(false, 'myMenu');
+    } else {
+      this.menuCtrl.enable(true, 'myMenu');
+    }
+  }
+
+  setTitle(title: any) {
+    this.currentPageTitle = title
+  }
+
 
 }

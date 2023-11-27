@@ -1,0 +1,178 @@
+<ion-header class="mobile-header">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="myMenu"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">
+      Alumini Association<br>
+      <ion-note>Engineering College Ajmer</ion-note>
+       </ion-title>
+    
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="log-in"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-row class="header ion-align-items-center">
+  <ion-col size="2" class="ion-align-items-center">
+    <img src="https://ionicacademy.com/wp-content/uploads/2020/02/ionic-Logo.svg" width="50px">
+  </ion-col>
+  <ion-col size="10" class="ion-text-left">
+    <ion-button 
+    #homebtn
+    fill="clear" 
+    color="dark" 
+    routerLink="/" 
+    routerDirection="root" 
+    routerLinkActive="active-item"
+    [routerLinkActiveOptions]="{exact: true}">
+      Home
+    </ion-button>
+    <!-- Button with dropdown -->
+    <ion-button 
+    #productbtn 
+    (mouseenter)="dropdown=true" 
+    (mouseleave)="hideDropdown($event)" 
+    fill="clear" color="dark"
+      routerLink="/alumini" routerDirection="root" routerLinkActive="active-item">
+      Alumini
+      <ion-icon slot="end" [name]="dropdown ? 'chevron-down' : 'chevron-up'"></ion-icon>
+    </ion-button>
+    <div *ngIf="dropdown" class="dropdown" (mouseleave)="dropdown = false" #dropdownbox>
+      <ion-item (click)="dropdown = false" routerLink="/alumini" [queryParams]="{ category: 'Chapter'}" lines="none" routerDirection="root" >
+        Chapter
+      </ion-item>
+      <ion-item (click)="dropdown = false" button routerLink="/alumini" [queryParams]="{ category: 'Alumini News'}"
+        lines="none" routerDirection="root" >
+        Alumini News
+      </ion-item>
+      <ion-item (click)="dropdown = false" button routerLink="/alumini" [queryParams]="{ category: 'Obituary'}"
+        lines="none" routerDirection="root">
+        Obituary
+      </ion-item>
+    </div>
+
+    <ion-button 
+    #reunionbtn
+    fill="clear" 
+    color="dark" 
+    routerLink="/reunion" 
+    routerDirection="root" 
+    routerLinkActive="active-item"
+    [routerLinkActiveOptions]="{exact: true}">
+      Reunion
+    </ion-button>
+
+    
+    <ion-button 
+    #awardnbtn
+    fill="clear" 
+    color="dark" 
+    routerLink="/awards" 
+    routerDirection="root" 
+    routerLinkActive="active-item"
+    [routerLinkActiveOptions]="{exact: true}">
+      Award
+    </ion-button>
+
+    <ion-button 
+    #aboutbtn 
+    fill="clear"
+    (mouseenter)="abtdropdown=true" 
+    (mouseleave)="abtHideDropdown($event)"  
+    color="dark" 
+    routerLink="/about" routerDirection="root" routerLinkActive="active-item">
+      About 
+      <ion-icon slot="end" [name]="abtdropdown ? 'chevron-down' : 'chevron-up'"></ion-icon>
+    </ion-button>
+    <div *ngIf="abtdropdown" class="abtdropdown" (mouseleave)="dropdown = false" #abtdropdownbox>
+      <ion-item (click)="abtdropdown = false" routerLink="/alumini" [queryParams]="{ category: 'theBoard'}" lines="none" routerDirection="root" >
+        The Board
+      </ion-item>
+      <ion-item (click)="abtdropdown = false" button routerLink="/alumini" [queryParams]="{ category: 'President'}"
+        lines="none" routerDirection="root" >
+        President
+      </ion-item>
+      <ion-item (click)="abtdropdown = false" button routerLink="/alumini" [queryParams]="{ category: 'Constitution'}"
+        lines="none" routerDirection="root">
+        Constitution
+      </ion-item>
+    </div>
+
+    
+    <ion-button 
+    #jobsbtn
+    fill="clear" 
+    color="dark" 
+    routerLink="/jobs" 
+    routerDirection="root" 
+    routerLinkActive="active-item"
+    [routerLinkActiveOptions]="{exact: true}">
+      Jobs
+    </ion-button>
+
+    
+    <ion-button 
+    #membershipbtn
+    fill="clear" 
+    color="dark" 
+    routerLink="/membership" 
+    routerDirection="root" 
+    routerLinkActive="active-item"
+    [routerLinkActiveOptions]="{exact: true}">
+      Membership
+    </ion-button>
+
+    
+    <ion-button 
+    #donatebtn
+    fill="clear" 
+    color="dark" 
+    routerLink="/donate" 
+    routerDirection="root" 
+    routerLinkActive="active-item"
+    [routerLinkActiveOptions]="{exact: true}">
+      Donate
+    </ion-button>
+
+    
+    <ion-button 
+    #publicationbtn
+    fill="clear" 
+    color="dark" 
+    routerLink="/publication" 
+    routerDirection="root" 
+    routerLinkActive="active-item"
+    [routerLinkActiveOptions]="{exact: true}">
+      Publication
+    </ion-button>
+
+
+    
+    <ion-button 
+    #teambtn
+    fill="clear" 
+    color="dark" 
+    routerLink="/team" 
+    routerDirection="root" 
+    routerLinkActive="active-item"
+    [routerLinkActiveOptions]="{exact: true}">
+      Team
+    </ion-button>
+
+
+
+  </ion-col>
+
+  <!-- <ion-col size="2" class="ion-text-right">
+    <ion-button fill="clear" color="dark">
+      <ion-icon slot="icon-only" name="log-in"></ion-icon>
+    </ion-button>
+  </ion-col> -->
+
+</ion-row>
