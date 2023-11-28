@@ -1,4 +1,4 @@
-<!-- <ion-header class="ion-no-border" > 
+<!--<ion-header class="ion-no-border" > 
 
   <ion-toolbar color="primary">     
     <ion-title class="ion-text-center">
@@ -6,19 +6,19 @@
       <ion-note>Engineering College Ajmer</ion-note>
     </ion-title>
 
-    <!-- <ion-avatar>
+   <!-- <ion-avatar>
       <img  src="assets/logo/logo_avatar.png" />
     </ion-avatar> --
 
 
     <ion-buttons slot="end">
-      <!-- <ion-menu-button></ion-menu-button> --
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header> -->
 
 <ion-content class="ion-padding" color="light" [fullscreen]="true">
-  <div class="hero"></div>
+  <!-- <div class="hero"></div> -->
 
   <div class="banner">
     <app-banner [slides]="home_top_banner"></app-banner>
@@ -180,7 +180,8 @@ Alumni in different parts of the world have formed Chapters of their association
   <div class="reunion">
     <h2>Glimps Of Reunion</h2>
     <div class="banner">
-      <ion-img src="assets/logo/150H350W.png" alt="Alumini Association of Engineering College Ajmer"></ion-img>
+      <app-banner [slides]="home_top_banner"></app-banner>
+      <!-- <ion-img src="assets/logo/150H350W.png" alt="Alumini Association of Engineering College Ajmer"></ion-img> -->
   
     </div>
 
@@ -191,7 +192,7 @@ Alumni in different parts of the world have formed Chapters of their association
     <ion-grid>
       <ion-row>
         <ion-col size="12" size-sm="6">
-          <div>
+          <!-- <div>
             <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
               <ion-list>
               <ion-item>
@@ -235,7 +236,7 @@ Alumni in different parts of the world have formed Chapters of their association
               [disabled]="!myForm.valid">Submit</ion-button>
             </ion-list>
             </form>
-          </div>
+          </div> -->
 
         </ion-col>
 

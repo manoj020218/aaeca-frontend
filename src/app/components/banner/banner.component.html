@@ -8,8 +8,9 @@
     [centeredSlides]="true"
     [autoplay]="true"
     [spaceBetween]="10"
+    
     [pagination]="{clickable: true, dynamicBullets: true}">
-    effect="flip"
+    <!-- effect="flip" -->
     <swiper-slide *ngFor="let slide of slides">
       <img [src]="slide?.banner" />
     </swiper-slide>
