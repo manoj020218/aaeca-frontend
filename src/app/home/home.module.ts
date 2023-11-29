@@ -12,7 +12,7 @@ import { BannerComponent } from '../components/banner/banner.component';
   imports: [
     CommonModule,
     FormsModule,
-    // ReactiveFormsModule,
+    ReactiveFormsModule,
     IonicModule,
     BannerComponent,
     HomePageRoutingModule

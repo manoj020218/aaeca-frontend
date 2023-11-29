@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
   show = true;
   home_top_banner:any[] = [];
   myForm!: FormGroup;
@@ -18,6 +19,7 @@ export class HomePage {
 
   ngOnInit() {
     this.callBanner();
+    this.queryForm();
   }
 
 queryForm(){

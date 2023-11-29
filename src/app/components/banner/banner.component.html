@@ -1,4 +1,4 @@
-<div *ngIf="slides.length > 0">
+<div *ngIf="slides.length > 0" [ngClass]="{'div_m': isMobile}">
   <swiper-container 
     #swiper
     (slidechange)="onSlideChange($event)"

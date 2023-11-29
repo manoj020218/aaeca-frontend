@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 
 import { BannerComponent } from './banner.component';
 
