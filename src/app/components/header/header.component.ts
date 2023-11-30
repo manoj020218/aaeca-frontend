@@ -51,5 +51,19 @@ export class HeaderComponent  implements OnInit {
     }
   }
 
+  mshipHideDropdown(event: { clientX: any; clientY: any; }) {
+    const xTouch = event.clientX;
+    const yTouch = event.clientY;
+    
+    const rect = this.membershipbtn.nativeElement.getBoundingClientRect();
+    const topBoundary = rect.top+2;
+    const leftBoundary = rect.left+2;
+    const rightBoundary = rect.right-2;
+
+    if (xTouch < leftBoundary || xTouch > rightBoundary || yTouch < topBoundary) {
+      this.abtdropdown = false;
+    }
+  }
+
 
 }

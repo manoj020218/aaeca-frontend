@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: MembershipPage
+  },
+  {
+    path: 'directory',
+    loadChildren: () => import('./directory/directory.module').then( m => m.DirectoryPageModule)
   }
 ];
 

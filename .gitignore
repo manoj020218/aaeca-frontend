@@ -70,5 +70,6 @@ Thumbs.db
 # Id , Password 
 environments
 AndroidManifest.xml
+info.plist
 environment.ts
 environment.prod.ts
