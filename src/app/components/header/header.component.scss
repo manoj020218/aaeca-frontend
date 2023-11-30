@@ -51,6 +51,19 @@
     }
 }
 
+.mshipdropdown {
+  width: 136px;
+  height: 50px;
+  background: #fff;
+  position: absolute;
+  top: 40px;
+  left: 407px;
+  z-index: 1;
+  ion-item:hover {
+      --ion-item-color: var(--ion-color-primary);
+  }
+}
+
 ion-button{
     font-size:10px;
     font-weight: 600;

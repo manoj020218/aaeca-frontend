@@ -121,22 +121,25 @@
     #membershipbtn
     fill="clear" 
     color="dark" 
+    (mouseenter)="membershipdropdown=true" 
+    (mouseleave)="mshipHideDropdown($event)" 
     routerLink="/membership" 
     routerDirection="root" 
     routerLinkActive="active-item"
     [routerLinkActiveOptions]="{exact: true}">
       Membership
+      <ion-icon slot="end" [name]="membershipdropdown ? 'chevron-down' : 'chevron-up'"></ion-icon>
     </ion-button>
-    <!-- <div *ngIf="membershipdropdown" class="abtdropdown" (mouseleave)="dropdown = false" #membershipdropdownbox>
+    <div *ngIf="membershipdropdown" class="mshipdropdown" (mouseleave)="membershipdropdown = false" #membershipdropdownbox>
       <ion-item 
       (click)="membershipdropdown = false" 
-      button routerLink="/directory" 
+      button routerLink="/membership/directory" 
       [queryParams]="{ category: 'directory'}" 
       lines="none" 
       routerDirection="root">
         Alumini Directory
       </ion-item>       
-    </div> -->
+    </div>
 
     
     <ion-button 
