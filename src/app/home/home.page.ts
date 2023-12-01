@@ -78,7 +78,7 @@ onSubmit() {
     for (let i = 0; i <5; i++) {
             // make array of image objects
             this.home_top_banner.push(
-              {banner:'https://picsum.photos/id/1/200/300'}
+              {banner:`https://picsum.photos/id/${120+i}/1200/1200`}
             );
           };
 

@@ -6,10 +6,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./awards.page.scss'],
 })
 export class AwardsPage implements OnInit {
+  show: boolean;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  
+  hide() {
+    this.show = !this.show;
+    console.log(this.show);
+  }
+
+  share() {
+    console.log('check');
+  }
+  
+
+  addAward(){
+    console.log('add award');
+  }
 }
