@@ -16,8 +16,7 @@ export class AppComponent {
   
   menuType: string = 'reveal';
   public appPages: any[] =  [
-    {
-      title: 'Account',url: '/login',icon: 'person'    },
+    // {title: 'Account',url: '/login',icon: 'person'},
     {
       title: 'Home',url: '/home', icon: 'home'    },
    

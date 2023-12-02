@@ -77,10 +77,11 @@ onSubmit() {
 
   shareViaFacebook(){
 
+
   }
 
   shareViaInstagram(){
-
+// https://www.instagram.com/invites/contact/?i=12eltkk8yaypf&utm_content=qbso68c
   }
 
   shareViaTwitter(){
@@ -88,7 +89,8 @@ onSubmit() {
   }
 
   sharePicker(){
-
+    //linkedin
+    // https://www.linkedin.com/groups/9292163
   }
 
   shareViaEmail(){
