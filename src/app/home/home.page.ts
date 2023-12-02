@@ -1,17 +1,33 @@
+import { style, transition, trigger, animate } from '@angular/animations';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import function to register Swiper custom elements
+import { register } from 'swiper/element/bundle';
+// register Swiper custom elements
+register();
 
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
+
+  animations: [
+    trigger('cardAnimation', [
+      transition('* => *', [
+        style({ transform: 'translateX(100%)', opacity: 0 }),
+        animate('500ms', style({ transform: 'translateX(0)', opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
+
 export class HomePage {
 
   show = true;
   home_top_banner:any[] = [];
   myForm!: FormGroup;
+  home_glimps_banner:any[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,6 +36,13 @@ export class HomePage {
   ngOnInit() {
     this.callBanner();
     this.queryForm();
+    this.callGlimpsBanner();
+
+    // Auto-play the slider
+    setInterval(() => {
+      this.nextSlide();
+    }, 2000); // Adjust the interval as needed
+
   }
 
 queryForm(){
@@ -74,7 +97,6 @@ onSubmit() {
 
 
   callBanner(){
-
     for (let i = 0; i <5; i++) {
             // make array of image objects
             this.home_top_banner.push(
@@ -96,5 +118,42 @@ onSubmit() {
     // });
   
    }
+
+   callGlimpsBanner(){
+    for (let i = 0; i <7; i++) {
+      // make array of image objects
+      this.home_glimps_banner.push(
+        {banner:`assets/imgs/reunion/${i}.jpg`}
+      );
+    };
+
+// this.bannerApi.getImageByGymId("default_memberlist_page").subscribe({            
+//   next:dat=>{
+//     console.log(dat)
+//     for (let i = 0; i <dat.length; i++) {
+//       // make array of image objects
+//       this.members_slides.push(
+//         {banner:this.baseUri+'/images/'+dat[i].image_path}
+//       );
+//     };
+//   },
+//   error:err=>{ console.log(err)}
+// });
+   }
+
+   cards = [
+    { title: 'Mr. Ramesh Kumar', subtitle:'1,00,000/-INR', content: 'Hostel Development', imageUrl: 'assets/imgs/personboy.jpg' },
+    { title: 'Dr. Ashok Kumar',subtitle:'2,00,000/-INR', content: 'AI IOT reaserach project',imageUrl: 'assets/imgs/persongrl.jpg' },
+    { title: 'Mr. Aashish Kumar', subtitle:'2,00,000/-INR',content: 'Sponsor a Student',imageUrl: 'assets/imgs/personmale.jpg' },
+  ];
+
+
+  currentIndex = 0;
+
+
+  nextSlide() {
+    this.currentIndex = (this.currentIndex + 1) % this.cards.length;
+  }
+
    
 }

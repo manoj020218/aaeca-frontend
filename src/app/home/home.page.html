@@ -26,30 +26,62 @@
 
   </div>
 
-  <div class="body">
-    <h2 class="heading">
+  <div class="body" class="ion-text-wrap">
+    <h2 class="heading" class="ion-text-left">
       Alumni Association
     </h2>
+    <ion-list>
+      <p>
+        Engineering College Ajmer prides itself on the success of its alumni. After successfully completing their academic years at the institute, our alumni went on to expand their wings and reached new heights, be it as entrepreneurs, industrialists, academicians, researchers, social cause champions, bureaucrats etc. We have had many notable alumni who have received national and international recognition in their respective professional fields. With more than 5500 alumni spanning across the globe, they have been instrumental in strengthening the image of Engineering College Ajmer.
+        </p>
+      <p>
+        Though their dreams took them in new directions, ECA alumni have always felt connected to their alma mater and hence, they have over the years nurtured the institute through their generous contributions. The spirit of Giving Back is reflected in every corner of the institute be it infrastructure development, scholarships, especially to girl students, financial support to various hobby clubs, set-up of different R&D labs and faculty chairs, donations to various community development sectors, environment etc. Established in 31.08.2022, Alumni Association of ECA is an independent registered body of more than xxxx alumni spanning across the world. Its mission is –
+      </p>
+      <p><strong>•</strong>To actively promote interaction & networking among its alumni.</p>
+      <p><strong>•</strong>To be a pillar of support in their hour of need.
+      </p>
+      <p><strong>•</strong>
+        To help realize the notion of Giving Back to the Alma mater.
+      </p>
+      <p><strong>•</strong>To function on a charitable basis, and to run the Association on ‘no profit-no loss’ basis’.
+      </p>
+      <p><strong>•</strong>To contribute to the vision and strengthen the image of ECA at national & international level.
+        Alumni in different parts of the world have formed Chapters of their associations. These Chapters work actively towards promoting networking among themselves and with the institute as well. Organizing alumni Reunions is an integral part of the Alumni Association of ECA.
+        </p>
+    </ion-list>
     <p class="htext">
-      Engineering College Ajmer prides itself on the success of its alumni. After successfully completing their academic years at the institute, our alumni went on to expand their wings and reached new heights, be it as entrepreneurs, industrialists, academicians, researchers, social cause champions, bureaucrats etc. We have had many notable alumni who have received national and international recognition in their respective professional fields. With more than xxxxx alumni spanning across the globe, they have been instrumental in strengthening the image of Engineering College Ajmer.
-Though their dreams took them in new directions, ECA alumni have always felt connected to their alma mater and hence, they have over the years nurtured the institute through their generous contributions. The spirit of Giving Back is reflected in every corner of the institute be it infrastructure development, scholarships, especially to girl students, financial support to various hobby clubs, set-up of different R&D labs and faculty chairs, donations to various community development sectors, environment etc.
-Established in (date of establishment ..xx-xx-xxxx), Alumni Association of ECA is an independent registered body of more than xxxx alumni spanning across the world. Its mission is –
-•	To actively promote interaction & networking among its alumni.
-•	To be a pillar of support in their hour of need.
-•	To help realize the notion of Giving Back to the Alma mater.
-•	To function on a charitable basis, and to run the Association on ‘no profit-no loss’ basis’.
-•	To contribute to the vision and strengthen the image of ECA at national & international level.
-Alumni in different parts of the world have formed Chapters of their associations. These Chapters work actively towards promoting networking among themselves and with the institute as well. Organizing alumni Reunions is an integral part of the Alumni Association of ECA.
-
+      
+			
+		
     </p>
 
   </div>
   <div class="events">
     <h2 class="heading">
-      News
-    </h2>
+      Top Donor
+    </h2>    
+    <ion-grid>
+      <swiper-container>
+        <swiper-slide *ngFor="let card of cards" slides-per-view="3" speed="100" loop="true" css-mode="true">
+          <ion-card >
+            <img [src]="card.imageUrl" alt="{{ card.title }}">
+            <ion-card-header>
+              <ion-card-title>{{card.title}}</ion-card-title>
+              <ion-card-subtitle>{{card.subtitle}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              {{ card.content }}
+            </ion-card-content>
+          </ion-card>
+        </swiper-slide>
+    </swiper-container>
+    </ion-grid>
 
-    
+  </div>
+  <div class="events">
+    <h2 class="heading">
+      News
+    </h2>    
     <ion-grid>
       <ion-row>
         <ion-col size="12" size-sm="4">
@@ -180,11 +212,8 @@ Alumni in different parts of the world have formed Chapters of their association
   <div class="reunion">
     <h2>Glimps Of Reunion</h2>
     <div class="banner">
-      <app-banner [slides]="home_top_banner"></app-banner>
-      <!-- <ion-img src="assets/logo/150H350W.png" alt="Alumini Association of Engineering College Ajmer"></ion-img> -->
-  
+      <app-banner [slides]="home_glimps_banner"></app-banner>
     </div>
-
   </div>
 
   <div class="contactus">
@@ -286,7 +315,7 @@ Alumni in different parts of the world have formed Chapters of their association
         <ion-col size="12" size-sm="6">
           <h3>We Are Located at</h3>
           <p> Alumni Association office <br>
-                Room no XXX <br>
+                Room No. NB208<br>
                  ECA Ajmer <br>
                   email: aaeca&#64;aaeca.com<br>
                   Phone: +917891012342 </p>

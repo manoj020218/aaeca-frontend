@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: DonatePage
+  },
+  {
+    path: 'donnerwall',
+    loadChildren: () => import('./donnerwall/donnerwall.module').then( m => m.DonnerwallPageModule)
   }
 ];
 
