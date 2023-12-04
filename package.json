@@ -1,7 +1,7 @@
 {
   "name": "aaeca",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Manoj Jain",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
@@ -30,6 +30,9 @@
     "@capacitor/keyboard": "5.0.6",
     "@capacitor/status-bar": "5.0.6",
     "@ionic/angular": "^7.0.0",
+
+    
+    "firebase": "^10.7.0",
     "ionicons": "^7.0.0",
     "rxjs": "~7.8.0",
     "swiper": "^11.0.5",
