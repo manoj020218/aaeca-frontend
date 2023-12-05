@@ -1,31 +1,43 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>membership</ion-title>
-  </ion-toolbar>
-</ion-header> -->
 
 <ion-content color="light">
- <div #text class="ion-text-wrap">
-  <h2 class="ion-text-center">Benefits of becoming the Life Member of the Alumni Association Engineering College Ajmer</h2>
-      <ion-list>  
-      <p><strong>Global Alumni Network:</strong> Global Alumni Network: Join a worldwide network of Engineering College Ajmer alumni, connecting you to a diverse and influential community around the globe.</p>
-        <p><strong>Institute-Alumni Bridge:</strong> The Alumni Association serves as a vital link between the Institute and its graduates, fostering collaboration and communication.</p>
-          <p><strong>Stay Informed:</strong> Receive the Engineering College Ajmer Newsletter and other publications to stay updated on the latest news and events at your alma mater.</p>
-            <p><strong>Local Chapters:</strong> Access Alumni Chapters globally, participating in regular chapter get-togethers and exclusive events.</p>
-              <p><strong>Special Institute Events:</strong> Be invited to special events and ceremonies hosted by the Institute and Alumni Chapters worldwide.</p>
-              <p><strong>Batch Reunions:</strong> Attend milestone batch/class reunions like the 15th, 25th, 30th, 35th, 40th, and 50th, with assistance from the Alumni Association in organizing other batch reunions upon request. Reunion photos and videos are made available through the website here after the events.</p>
-                <p><strong>Digital Networking:</strong> Connect with alumni via Whatsapp Group, LinkedIn, Twitter, and more.</p>
-                  <p><strong>Academic Services:</strong> Obtain your academic transcripts and other certificates conveniently through the Alumni Association.</p>
-                    <p><strong>Mentorship:</strong> Benefit from mentoring opportunities provided by senior alumni, including participation in SEE and SMC programs.</p>
-                      <p><strong>Souvenir Shop:</strong> Explore the Alumni Association's own souvenir shop, where you can find memorabilia and merchandise celebrating your alma mater.</p>
-                        <p><strong>Exclusive Email ID:</strong> Receive a permanent email ID (e.g., ) by sending a request to  providing your personal details, alumni ID, and more*.</p>
-                          <p><strong>Credit Card Facility:</strong> Enjoy access to an exclusive credit card facility designed for alumni, offering competitive terms, customized designs, and rewards programs. Insurance Policy: Secure your financial future with a comprehensive insurance policy tailored to the needs of our alumni.</p>
-                            <p><strong>Campus Tours:</strong> The Alumni Association can assist in organizing campus tours for you and your family, allowing you to revisit and explore the campus.<br>
-                              <p><strong>Campus Facilities:</strong> Enjoy discounted rates for alumni in the Visitors Hostel and access other campus facilities. Additionally, you can visit hostels, the library, departments, labs, and even meet with faculty members with the Alumni Association's help.</p>
-                                <p><strong>Privacy and Security:</strong> Rest assured that your life membership database is maintained securely by the Alumni Association and not shared with unauthorized parties. It also offers Degree Verification Services for pre- and post-employment screening companies.</p>
-</ion-list> 
- </div>
- 
+  <div #text class="ion-text-wrap">
+    <h2 class="ion-text-center">Benefits of becoming the Life Member of the Alumni Association Engineering College Ajmer
+    </h2>
+    <ion-list>
+      <p><strong>Global Alumni Network:</strong> Global Alumni Network: Join a worldwide network of Engineering College
+        Ajmer alumni, connecting you to a diverse and influential community around the globe.</p>
+      <p><strong>Institute-Alumni Bridge:</strong> The Alumni Association serves as a vital link between the Institute
+        and its graduates, fostering collaboration and communication.</p>
+      <p><strong>Stay Informed:</strong> Receive the Engineering College Ajmer Newsletter and other publications to stay
+        updated on the latest news and events at your alma mater.</p>
+      <p><strong>Local Chapters:</strong> Access Alumni Chapters globally, participating in regular chapter
+        get-togethers and exclusive events.</p>
+      <p><strong>Special Institute Events:</strong> Be invited to special events and ceremonies hosted by the Institute
+        and Alumni Chapters worldwide.</p>
+      <p><strong>Batch Reunions:</strong> Attend milestone batch/class reunions like the 15th, 25th, 30th, 35th, 40th,
+        and 50th, with assistance from the Alumni Association in organizing other batch reunions upon request. Reunion
+        photos and videos are made available through the website here after the events.</p>
+      <p><strong>Digital Networking:</strong> Connect with alumni via Whatsapp Group, LinkedIn, Twitter, and more.</p>
+      <p><strong>Academic Services:</strong> Obtain your academic transcripts and other certificates conveniently
+        through the Alumni Association.</p>
+      <p><strong>Mentorship:</strong> Benefit from mentoring opportunities provided by senior alumni, including
+        participation in various programs.</p>
+      <p><strong>Souvenir Shop:</strong> Explore the Alumni Association's own souvenir shop, where you can find
+        memorabilia and merchandise celebrating your alma mater.</p>
+      <p><strong>Credit Card Facility:</strong> Enjoy access to an exclusive credit card facility designed for alumni,
+        offering competitive terms, customized designs, and rewards programs. Insurance Policy: Secure your financial
+        future with a comprehensive insurance policy tailored to the needs of our alumni.</p>
+      <p><strong>Campus Tours:</strong> The Alumni Association can assist in organizing campus tours for you and your
+        family, allowing you to revisit and explore the campus.<br>
+      <p><strong>Campus Facilities:</strong> Enjoy discounted rates for alumni in the Visitors Hostel and access other
+        campus facilities. Additionally, you can visit hostels, the library, departments, labs, and even meet with
+        faculty members with the Alumni Association's help.</p>
+      <p><strong>Privacy and Security:</strong> Rest assured that your life membership database is maintained securely
+        by the Alumni Association and not shared with unauthorized parties. It also offers Degree Verification Services
+        for pre- and post-employment screening companies.</p>
+    </ion-list>
+  </div>
+
 
 </ion-content>
 <ion-footer>
@@ -40,7 +52,7 @@
           </ion-buttons>
           <ion-title>Membership Form</ion-title>
           <ion-buttons slot="end">
-            <ion-button [disabled]="!myForm.valid" (click)="confirm()" [strong]="true">Confirm</ion-button>
+            <ion-button type="submit" (click)="confirm()" [strong]="true">Confirm</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
@@ -49,219 +61,179 @@
           <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
             <ion-grid>
               <ion-list>
-              <ion-row>
-                <ion-col size-md="4" size="12">     
-                    
-                      <ion-item>
-                        <ion-input                 
-                       
-                        label="First Name*"
-                        labelPlacement="stacked"
-                        placeholder="Enter First Name*"
+                <ion-row>
+                  <ion-col size-md="4" size="12">
+
+                    <ion-item>
+                      <ion-input label="First Name*" labelPlacement="stacked" placeholder="Enter First Name*"
                         formControlName="first_name"></ion-input>
-                      </ion-item>
-        
-                </ion-col>
-        
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input              
-                    type="text"
-                    label="Middle Name"
-                    labelPlacement="stacked"
-                    placeholder="Middle Name"
-                    formControlName="middle_name"
-                    ></ion-input>
-                  </ion-item>
-        
-                </ion-col>
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input                 
-                    type="text"
-                    label="Last Name*"
-                    labelPlacement="stacked"
-                    placeholder="Enter Last Name*"
-                    formControlName="last_name"></ion-input>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-        
-              <ion-row>
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input                 
-                    type="text"
-                    label="Roll Number*"
-                    labelPlacement="stacked"
-                    placeholder="Roll Number"
-                    formControlName="roll_number"></ion-input>
-                  </ion-item>
-                </ion-col>
-        
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input                 
-                    type="text"
-                    label="Degree Name*"
-                    labelPlacement="stacked"
-                    placeholder="Degree"
-                    formControlName="degree"></ion-input>
-                  </ion-item>
-                </ion-col>
-        
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input                 
-                    type="text"
-                    label="Passout Year*"
-                    labelPlacement="stacked"
-                    placeholder="Passout Year"
-                    formControlName="passing_year"></ion-input>
-                  </ion-item>
-                </ion-col>
-        
-              </ion-row>
-        
-              <ion-row>
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input                 
-                    type="text"
-                    label="Gender*"
-                    labelPlacement="stacked"
-                    placeholder="Gender"
-                    formControlName="gender"></ion-input>
-                  </ion-item>
-                </ion-col>
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input                 
-                    type="text"
-                    label="Linkedin*"
-                    labelPlacement="stacked"
-                    placeholder="Linkedin Link"
-                    formControlName="linkedin"></ion-input>
-                  </ion-item>
-                </ion-col>
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input                 
-                    type="text"
-                    label="X handle*"
-                    labelPlacement="stacked"
-                    placeholder="X handle"
-                    formControlName="twitter"></ion-input>
-                  </ion-item>
-                </ion-col>
-        
-              </ion-row>
-        
-              <ion-row>
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input                 
-                    type="text"
-                    label="Employer*"
-                    labelPlacement="stacked"
-                    placeholder="Current Employer"
-                    formControlName="employer"></ion-input>
-                  </ion-item>
-                </ion-col>
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input                 
-                    type="text"
-                    label="Designation*"
-                    labelPlacement="stacked"
-                    placeholder="Designation"
-                    formControlName="designation"></ion-input>
-                  </ion-item>
-                </ion-col>
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input                 
-                    type="email"
-                    label="Official Email*"
-                    labelPlacement="stacked"
-                    placeholder="Official Email"
-                    formControlName="official_name"></ion-input>
-                  </ion-item>
-                </ion-col>
-        
-              </ion-row>
-        
-              <ion-row>
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input                 
-                    type="email"
-                    label="Private Email*"
-                    labelPlacement="stacked"
-                    placeholder="Private Email"
-                    formControlName="private_email"></ion-input>
-                  </ion-item>
-                </ion-col>
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input                 
-                    type="text"
-                    label="Mobile*"
-                    labelPlacement="stacked"
-                    placeholder="Mobile"
-                    formControlName="mobile"></ion-input>
-                  </ion-item>
-                </ion-col>
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-input                 
-                    type="text"
-                    label="Whatsapp Mobile*"
-                    labelPlacement="stacked"
-                    placeholder="Whatsapp Mobile"
-                    formControlName="whatsapp_mobile"></ion-input>
-                  </ion-item>
-                </ion-col>
-        
-              </ion-row>
-              <ion-row>
-                <ion-col size-md="8" size="12">
-                  <ion-item>
-                    <ion-textarea                 
-                    type="text"
-                    label="Address*"
-                    labelPlacement="stacked"
-                    placeholder="Address"
-                    formControlName="address"></ion-textarea>
-                  </ion-item>
-                </ion-col>
+                    </ion-item>
 
-                <ion-col size-md="4" size="12">
-                  <ion-item>
-                    <ion-button (click)="takePicture()">Upload Picture</ion-button>
-                  </ion-item>
-                  <ion-note>Image file should be less than 2 MB.</ion-note>
-                </ion-col>               
+                  </ion-col>
 
-              </ion-row>
-              <ion-item>
-                <ion-checkbox labelPlacement="start"></ion-checkbox>
-                <ion-label class="ion-text-wrap">
-                  I agree that the above data may be used to update the Alumni Association database. </ion-label>          
-                
-              </ion-item>
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="text" label="Middle Name" labelPlacement="stacked" placeholder="Middle Name"
+                        formControlName="middle_name"></ion-input>
+                    </ion-item>
 
-              <ion-item>
-                <ion-checkbox labelPlacement="start"></ion-checkbox>
-                <ion-label class="ion-text-wrap">
-                  I agree that the above data may be shared with Engineering College Ajmer.</ion-label>
-                
-              </ion-item>
-        
-            </ion-list>  
-            </ion-grid> 
+                  </ion-col>
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="text" label="Last Name*" labelPlacement="stacked" placeholder="Enter Last Name*"
+                        formControlName="last_name"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="text" label="Roll Number*" labelPlacement="stacked" placeholder="Roll Number"
+                        formControlName="roll_number"></ion-input>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="text" label="Degree Name*" labelPlacement="stacked" placeholder="Degree"
+                        formControlName="degree_name"></ion-input>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="text" label="Passout Year*" labelPlacement="stacked" placeholder="Passout Year"
+                        formControlName="passout_year"></ion-input>
+                    </ion-item>
+                  </ion-col>
+
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="text" label="Gender*" labelPlacement="stacked" placeholder="Gender"
+                        formControlName="gender"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="text" label="Linkedin*" labelPlacement="stacked" placeholder="Linkedin Link"
+                        formControlName="linkedin"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="text" label="X handle*" labelPlacement="stacked" placeholder="X handle"
+                        formControlName="xhandle"></ion-input>
+                    </ion-item>
+                  </ion-col>
+
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="text" label="Employer*" labelPlacement="stacked" placeholder="Current Employer"
+                        formControlName="employer"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="text" label="Designation*" labelPlacement="stacked" placeholder="Designation"
+                        formControlName="designation"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="email" label="Official Email*" labelPlacement="stacked"
+                        placeholder="Official Email" formControlName="official_email"></ion-input>
+                    </ion-item>
+                  </ion-col>
+
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="email" label="Private Email*" labelPlacement="stacked"
+                        placeholder="Private Email" formControlName="email"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="text" label="Mobile*" labelPlacement="stacked" placeholder="Mobile"
+                        formControlName="mobile"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-input type="text" label="Whatsapp Mobile*" labelPlacement="stacked"
+                        placeholder="Whatsapp Mobile" formControlName="whatsapp_number"></ion-input>
+                    </ion-item>
+                  </ion-col>
+
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-textarea type="text" label="Current Country*" labelPlacement="stacked" placeholder="Country"
+                        formControlName="current_country"></ion-textarea>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-textarea type="text" label="Current City*" labelPlacement="stacked" placeholder="City"
+                        formControlName="current_city"></ion-textarea>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-textarea type="text" label="Current City Pincode*" labelPlacement="stacked" placeholder="Current Pincode"
+                        formControlName="current_pincode"></ion-textarea>
+                    </ion-item>
+                  </ion-col>
+
+                </ion-row>
+
+                <ion-row>
+                  <ion-col size-md="8" size="12">
+                    <ion-item>
+                      <ion-textarea type="text" label="Address*" labelPlacement="stacked" placeholder="Current Address"
+                        formControlName="current_address"></ion-textarea>
+                    </ion-item>
+                  </ion-col>
+
+                  <ion-col size-md="4" size="12">
+                    <ion-item>
+                      <ion-button (click)="takePicture()">Upload Picture</ion-button>
+                    </ion-item>
+                    <ion-note>Image file should be less than 2 MB.</ion-note>
+                  </ion-col>
+
+                </ion-row>
+                <ion-item>
+                  <ion-checkbox labelPlacement="start"></ion-checkbox>
+                  <ion-label class="ion-text-wrap">
+                    I agree that the above data may be used to update the Alumni Association database. </ion-label>
+
+                </ion-item>
+
+                <ion-item>
+                  <ion-checkbox labelPlacement="start"></ion-checkbox>
+                  <ion-label class="ion-text-wrap">
+                    I agree that the above data may be shared with Engineering College Ajmer.</ion-label>
+
+                </ion-item>
+
+              </ion-list>
+            </ion-grid>
           </form>
-         </div>
+        </div>
 
 
       </ion-content>

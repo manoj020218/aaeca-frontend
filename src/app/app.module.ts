@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { SharedComponentsModule } from './components/shared-components.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +18,7 @@ import { SharedComponentsModule } from './components/shared-components.module';
     IonicModule.forRoot(), 
     AppRoutingModule,
     SharedComponentsModule,
+    HttpClientModule, 
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

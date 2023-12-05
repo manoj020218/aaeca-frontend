@@ -18,8 +18,8 @@ export const environment = {
   },
 
   // add here all API related server address - 17/6/23
-  // SERVER:'http://154.61.69.200:3000/api/v1',
-  SERVER:'http://localhost:3000/api/v1', 
+  SERVER:'http://154.61.69.200:3000/api/v1',
+  // SERVER:'http://localhost:3000/api/v1', 
   PORT:'',
 
 };

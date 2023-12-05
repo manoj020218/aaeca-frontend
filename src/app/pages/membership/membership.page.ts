@@ -3,7 +3,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { Camera, CameraResultType } from '@capacitor/camera';
- 
+
+import { AlertController,LoadingController, ModalController, ToastController } from '@ionic/angular';
+import { Member } from './../../models/member';
+// animation from right to left for modal open 
+import { AnimationController } from '@ionic/angular';
+import { createAnimation } from '@ionic/core';
+
+import { MemberService } from 'src/app/services/member.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-membership',
@@ -26,6 +35,17 @@ export class MembershipPage implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
+    private animationCtrl: AnimationController, // for animation control 
+    public loadingController:LoadingController,
+    public router :Router,
+    public route :ActivatedRoute,
+    public memberApi:MemberService,
+    // public userApi: UserService,
+    
+    private alertCtrl: AlertController, 
+    private modalCtrl: ModalController,
+    private toastCtrl: ToastController,
+    // private navCtrl: NavController,
   ) {}
 
 
@@ -40,22 +60,42 @@ export class MembershipPage implements OnInit {
       first_name: ['', [Validators.required, Validators.minLength(3)]],
       middle_name: [''],
       last_name: ['', [Validators.required, Validators.minLength(3)]],
-      roll_No: ['', [Validators.required, Validators.minLength(6)]],
-      mobile: ['', [Validators.required, Validators.minLength(10)]],
-      whatsapp_mobile: ['', [Validators.required, Validators.minLength(10)]],
-      degree: ['', [Validators.required, Validators.minLength(3)]],
-      passing_year: ['', [Validators.required, Validators.minLength(4)]],
+      roll_number: ['', [Validators.required, Validators.minLength(6)]],
+      mobile: ['', [Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(13),
+        Validators.pattern('^[0-9]*$')]],
+      whatsapp_number: ['', [Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(13),
+        Validators.pattern('^[0-9]*$')]],
+      degree_name: ['', [Validators.required, Validators.minLength(3)]],
+      passout_year: ['', [Validators.required, Validators.minLength(4)]],
       gender: ['', [Validators.required, Validators.minLength(3)]],
-      linkedin: ['', [Validators.required, Validators.minLength(3)]],
-      twitter: ['', [Validators.required, Validators.minLength(3)]],
+      linkedin: [''],
+      xhandle: [''],
       employer: ['', [Validators.required, Validators.minLength(3)]],
       designation: ['', [Validators.required, Validators.minLength(3)]],
-      official_email: ['', [Validators.required, Validators.email]],
-      private_email: ['', [Validators.required, Validators.email]],
-      address: ['', [Validators.required, Validators.email]],
-      image: ['', [Validators.required, Validators.email]],
-      addTC: ['', [Validators.required]],
-      shareTC: ['', [Validators.required]],
+      official_email: ['', [Validators.required,
+        // Validators.toLowerCase(),
+        Validators.minLength(5),
+        Validators.maxLength(80),
+        Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
+      ]],
+      email: ['', [Validators.required,
+        // Validators.toLowerCase(),
+        Validators.minLength(5),
+        Validators.maxLength(80),
+        Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
+      ]],
+      current_city: ['', [Validators.required, Validators.minLength(3)]],
+      current_country: ['', [Validators.required, Validators.minLength(3)]],
+      current_pincode: ['', [Validators.required, Validators.minLength(3)]],
+      current_address: ['', [Validators.required,Validators.minLength(5),
+        Validators.maxLength(200),]],
+      image: [''],
+      tc_1: ['', [Validators.required]],
+      tc_2: ['', [Validators.required]],
 
     });
   }
@@ -80,8 +120,12 @@ export class MembershipPage implements OnInit {
     const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: false,
-      resultType: CameraResultType.Uri
+      resultType: CameraResultType.Base64, // Use Base64 for simplicity
+      // resultType: CameraResultType.Uri
     });
+
+    // Use the image data as needed
+    console.log(image.path);
   
     // image.webPath will contain a path that can be set as an image src.
     // You can access the original file using image.path, which can be
@@ -94,6 +138,7 @@ export class MembershipPage implements OnInit {
   };
   
   onSubmit() {
+    console.log(this.myForm.value);
     if (this.myForm.valid) {
       // Form is valid, handle the submission logic
       console.log('Form submitted:', this.myForm.value);
@@ -105,7 +150,9 @@ export class MembershipPage implements OnInit {
   }
 
   confirm() {
+    this.onSubmit();
     this.modal.dismiss(this.name, 'confirm');
+  
   }
 
   onWillDismiss(event: Event) {
