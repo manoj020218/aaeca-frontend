@@ -5,7 +5,7 @@
     </ion-buttons>
 
     <ion-title class="ion-text-center">
-      Alumini Association<br>
+      Alumni Association<br>
       <ion-note>Engineering College Ajmer</ion-note>
        </ion-title>
     
@@ -40,16 +40,16 @@
     (mouseleave)="hideDropdown($event)" 
     fill="clear" color="dark"
       routerLink="/alumini" routerDirection="root" routerLinkActive="active-item">
-      Alumini
+      Alumni
       <ion-icon slot="end" [name]="dropdown ? 'chevron-down' : 'chevron-up'"></ion-icon>
     </ion-button>
     <div *ngIf="dropdown" class="dropdown" (mouseleave)="dropdown = false" #dropdownbox>
       <ion-item (click)="dropdown = false" routerLink="/alumini" [queryParams]="{ category: 'Chapter'}" lines="none" routerDirection="root" >
         Chapter
       </ion-item>
-      <ion-item (click)="dropdown = false" button routerLink="/alumini" [queryParams]="{ category: 'Alumini News'}"
+      <ion-item (click)="dropdown = false" button routerLink="/alumini" [queryParams]="{ category: 'Alumni News'}"
         lines="none" routerDirection="root" >
-        Alumini News
+        Alumni News
       </ion-item>
       <ion-item (click)="dropdown = false" button routerLink="/alumini" [queryParams]="{ category: 'Obituary'}"
         lines="none" routerDirection="root">
@@ -137,7 +137,7 @@
       [queryParams]="{ category: 'directory'}" 
       lines="none" 
       routerDirection="root">
-        Alumini Directory
+        Alumni Directory
       </ion-item>       
     </div>
 

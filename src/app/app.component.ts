@@ -23,7 +23,7 @@ export class AppComponent {
     {
       title: 'About',url: '/about',icon: 'help'    },
    
-    {title: 'Alumini', url: '/alumini', icon: 'person'},
+    {title: 'Alumni', url: '/alumini', icon: 'person'},
     {title: 'Awards', url: '/awards', icon: 'information-circle'},
     {title: 'Donate', url: '/donate', icon: 'document-lock'},
     {title: 'Jobs', url:'/jobs', icon: 'log-out'},

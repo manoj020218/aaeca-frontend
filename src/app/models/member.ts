@@ -1,0 +1,29 @@
+export class Member {
+    _id?:any;
+    first_name?:string;
+    middle_name?:string;
+    last_name?:string;
+    email?:string;
+    roll_number?:string;
+    degree_name?:string;
+    passout_year?:string;
+    gender?:string;
+    linkedin?:string;
+    xhandle?:string;
+    employer?:string;
+    designation?:string;
+    official_email?:string;
+    mobile?:string;
+    whatsapp_number?:string;
+    current_city?:string;
+    current_country?:string;
+    current_address?:string;
+    current_pincode?:string;
+    image?:string;
+    profile_completion?:string;
+    approved_batchmat?:boolean;
+    approved_secretary?:boolean;
+    personal_detail_public?:boolean;
+    tnc_1?:boolean;;
+    tnc_2?:boolean;
+}
