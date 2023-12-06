@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'directory',
     loadChildren: () => import('./directory/directory.module').then( m => m.DirectoryPageModule)
+  },
+  {
+    path: 'memberform',
+    loadChildren: () => import('./memberform/memberform.module').then( m => m.MemberformPageModule)
   }
 ];
 
