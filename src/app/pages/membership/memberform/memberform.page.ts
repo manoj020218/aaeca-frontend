@@ -9,6 +9,9 @@ import { finalize } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 //***// */
 
+import { HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+
+
 import { AlertController,LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { Member } from 'src/app/models/member';
 // animation from right to left for modal open 
@@ -34,6 +37,13 @@ interface LocalFile {
   styleUrls: ['./memberform.page.scss'],
 })
 export class MemberformPage implements OnInit {
+
+  headers = new HttpHeaders()
+            .set('Content-Type','multipart/form-data');  
+
+  httpOptions = {
+    headers: this.headers,
+  };
 
   @ViewChild(IonModal) modal: IonModal;
   message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
@@ -61,6 +71,8 @@ export class MemberformPage implements OnInit {
     private http: HttpClient,
   ) { }
 
+
+
   ngOnInit() {
     this.membershipForm();
   }
@@ -74,12 +86,12 @@ export class MemberformPage implements OnInit {
       roll_number: ['', [Validators.required, Validators.minLength(6)]],
       mobile: ['', [Validators.required,
         Validators.minLength(10),
-        Validators.maxLength(13),
-        Validators.pattern('^[0-9]*$')]],
+        Validators.maxLength(15),
+        Validators.pattern('^[0-9+]*$')]],
       whatsapp_number: ['', [Validators.required,
         Validators.minLength(10),
-        Validators.maxLength(13),
-        Validators.pattern('^[0-9]*$')]],
+        Validators.maxLength(15),
+        Validators.pattern('^[0-9+]*$')]],
       degree_name: ['', [Validators.required, Validators.minLength(3)]],
       passout_year: ['', [Validators.required, Validators.minLength(4)]],
       gender: ['', [Validators.required, Validators.minLength(3)]],
@@ -104,7 +116,7 @@ export class MemberformPage implements OnInit {
       current_pincode: ['', [Validators.required, Validators.minLength(3)]],
       current_address: ['', [Validators.required,Validators.minLength(5),
         Validators.maxLength(200),]],
-      image: [''],
+      // image: [''],
       tc_1: ['', [Validators.required]],
       tc_2: ['', [Validators.required]],
 
@@ -131,15 +143,16 @@ export class MemberformPage implements OnInit {
       resultType: this.checkPlatformforWeb() ? CameraResultType.DataUrl : CameraResultType.Uri, // f0r PWA
     });
     // Use the image data as needed
-    console.log("image", image.base64String);
-    this.myForm.patchValue({'image':this.selectedImage.dataUrl})
+    console.log("image", image.dataUrl);
+    
   
     // image.webPath will contain a path that can be set as an image src.
     // You can access the original file using image.path, which can be
     // passed to the Filesystem API to read the raw data of the image,
     // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
     var imageUrl = image.webPath;
-    this.selectedImage = image;
+    this.selectedImage = image.dataUrl;
+    // this.myForm.patchValue({'image':this.selectedImage})
     // Can be set to the src of an image now
     // imageElement.src = imageUrl;
   };
@@ -162,11 +175,36 @@ export class MemberformPage implements OnInit {
   }
   
   onSubmit() {
-    console.log(this.myForm.value);
-    if (this.myForm.valid) {
-      // Form is valid, handle the submission logic
-      console.log('Form submitted:', this.myForm.value);
-    }
+    // console.log(this.myForm.value);
+    // transfer formbilder data to formData
+    const formData = new FormData();
+      Object.entries(this.myForm.value).forEach(
+        ([key, value]: any[]) => {
+          formData.set(key, value);
+        }
+  //submit the form using formDat
+  )
+  
+  if(this.myForm.valid) {
+     // Convert base64 image to Blob
+     const blob = this.dataURItoBlob(this.selectedImage);
+     formData.append('image_path', blob, 'image.png');
+    // Form is valid, handle the submission logic
+    console.log('Form submitted:', this.myForm.value);
+    this.memberApi.addMember(formData).subscribe({
+      next:res=>{
+        console.log(res);
+        // show aler
+        this.presentAlert('Thank You','Data Sent Successfully','We will Verify and Updata Data to DB');
+        this.router.navigate(['/membership/directory'],{replaceUrl:true});
+      },
+      error:err=>{
+        console.log(err);
+      }
+    })
+ 
+  }
+
   }
 
   cancel() {
@@ -181,12 +219,6 @@ export class MemberformPage implements OnInit {
   
   }
 
-  onWillDismiss(event: Event) {
-    const ev = event as CustomEvent<OverlayEventDetail<string>>;
-    if (ev.detail.role === 'confirm') {
-      this.message = `Hello, ${ev.detail.data}!`;
-    }
-  }
 
   async presentAlert(header:string,subheader:string, message:string) {
     const alert = await this.alertCtrl.create({
@@ -203,182 +235,6 @@ export class MemberformPage implements OnInit {
   }
 
 
-   /**
-   *@param event {EventObject} - the javascript change event
-   *@param field {String} - the form field control name
-   */
-   onFileChange(event, field) {
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      // just checking if it is an image, ignore if you want
-      if (!file.type.startsWith('image')) {
-        this.myForm.get(field).setErrors({
-          required: true
-        });
-        this.cd.markForCheck();
-      } else {
-        // unlike most tutorials, i am using the actual Blob/file object instead of the data-url
-        this.myForm.patchValue({
-          [field]: file
-        });
-        // need to run CD since file load runs outside of zone
-        this.cd.markForCheck();
-      }
-    }
-  }
-
-
-
-  // Create a new file from a capture image
-async saveImage(photo: Photo) {
-    const base64Data = await this.readAsBase64(photo);
-
-    const fileName = new Date().getTime() + '.jpeg';
-    const savedFile = await Filesystem.writeFile({
-        path: `${IMAGE_DIR}/${fileName}`,
-        data: base64Data,
-        directory: Directory.Data
-    });
-
-    // Reload the file list
-    // Improve by only loading for the new image and unshifting array!
-    this.loadFiles();
-}
-
-async loadFiles() {
-  this.images = [];
-
-  const loading = await this.loadingCtrl.create({
-    message: 'Loading data...'
-  });
-  await loading.present();
-
-  Filesystem.readdir({
-    path: IMAGE_DIR,
-    directory: Directory.Data
-  })
-    .then(
-      (result) => {
-        this.loadFileData(result.files.map((x) => x.name));
-      },
-      async (err) => {
-        // Folder does not yet exists!
-        await Filesystem.mkdir({
-          path: IMAGE_DIR,
-          directory: Directory.Data
-        });
-      }
-    )
-    .then((_) => {
-      loading.dismiss();
-    });
-}
-
-	// Get the actual base64 data of an image
-	// base on the name of the file
-	async loadFileData(fileNames: string[]) {
-		for (let f of fileNames) {
-			const filePath = `${IMAGE_DIR}/${f}`;
-
-			const readFile = await Filesystem.readFile({
-				path: filePath,
-				directory: Directory.Data
-			});
-
-			this.images.push({
-				name: f,
-				path: filePath,
-				data: `data:image/jpeg;base64,${readFile.data}`
-			});
-		}
-	}
-
-  // https://ionicframework.com/docs/angular/your-first-app/3-saving-photos
-  private async readAsBase64(photo: Photo) {
-    if (this.plt.is('hybrid')) {
-        const file = await Filesystem.readFile({
-            path: photo.path
-        });
-
-        return file.data;
-    }
-    else {
-        // Fetch the photo, read as a blob, then convert to base64 format
-        const response = await fetch(photo.webPath);
-        const blob = await response.blob();
-
-        return await this.convertBlobToBase64(blob) as string;
-    }
-}
-
-// Helper function
-convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
-    const reader = new FileReader;
-    reader.onerror = reject;
-    reader.onload = () => {
-        resolve(reader.result);
-    };
-    reader.readAsDataURL(blob);
-});
-
-
-async selectImage() {
-  const image = await Camera.getPhoto({
-    quality: 90,
-    allowEditing: false,
-    resultType: CameraResultType.Uri,
-    source: CameraSource.Photos // Camera, Photos or Prompt!
-});
-
-if (image) {
-    this.saveImage(image)
-}
-
-}
-
-async startUpload(file: LocalFile) {
-  const response = await fetch(file.data);
-    const blob = await response.blob();
-    const formData = new FormData();
-    formData.append('file', blob, file.name);
-    this.uploadData(formData);
-}
-
-async uploadData(formData: FormData) {
-  const loading = await this.loadingCtrl.create({
-      message: 'Uploading image...',
-  });
-  await loading.present();
-
-  // Use your own API!
-  const url = 'http://localhost:8888/images/upload.php';
-
-  this.http.post(url, formData)
-      .pipe(
-          finalize(() => {
-              loading.dismiss();
-          })
-      )
-      .subscribe(res => {
-          if (res['success']) {
-              this.presentToast('File upload complete.')
-          } else {
-              this.presentToast('File upload failed.')
-          }
-      });
-}
-
-
-async deleteImage(file: LocalFile) {
-  await Filesystem.deleteFile({
-      directory: Directory.Data,
-      path: file.path
-  });
-  this.loadFiles();
-  this.presentToast('File removed.');
-}
-
-
 	// Little helper
 	async presentToast(text) {
 		const toast = await this.toastCtrl.create({
@@ -388,5 +244,20 @@ async deleteImage(file: LocalFile) {
 		toast.present();
 	}
   
+
+
+   // Function to convert data URI to Blob
+   private dataURItoBlob(dataURI: string): Blob {
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const uint8Array = new Uint8Array(arrayBuffer);
+
+    for (let i = 0; i < byteString.length; i++) {
+      uint8Array[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([arrayBuffer], { type: mimeString });
+  }
 
 }

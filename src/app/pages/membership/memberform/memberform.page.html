@@ -165,8 +165,16 @@
 
                 <ion-col size-md="4" size="12">
 
-                  <ion-item>
-                    <ion-button (click)="takePicture()">Upload Picture</ion-button>
+                  <ion-item *ngIf="selectedImage">
+                    <ion-label position="stacked">Selected Image</ion-label>
+                    <img [src]="selectedImage" alt="Selected Image" style="max-width: 100%;">
+                  </ion-item>
+
+                  <ion-item>                   
+                    <ion-button 
+                    shape="round" 
+                    expand="block" 
+                    (click)="takePicture()">Upload Picture</ion-button>
                   </ion-item>
                   <ion-note>Image file should be less than 2 MB.</ion-note>
                 </ion-col>
@@ -190,5 +198,9 @@
           </ion-grid>
         </form>
       </div>
-      <ion-button shape="round" expand="full" type="submit" (click)="onSubmit()">Submit</ion-button>
+      <ion-button 
+      *ngIf="myForm.valid" 
+      shape="round" 
+      expand="full" 
+      type="submit" (click)="onSubmit()">Submit</ion-button>
 </ion-content>

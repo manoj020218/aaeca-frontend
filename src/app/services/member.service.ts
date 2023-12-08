@@ -19,9 +19,18 @@ export class MemberService {
   headers = new HttpHeaders()
             .set('Content-Type', 'application/json')
             .set('Access-Control-Allow-Origin', '*')
-            .set('Content-Type', 'application/x-www-form-urlencoded');    
-  
+            .set('Content-Type', 'application/x-www-form-urlencoded')
+            .set('Content-Type','multipart/form-data'); 
+            
+ 
+  // Set up the options object with headers
+  options = {
+    headers: this.headers
+  };
+
   constructor(private http: HttpClient) { }
+
+  
 
   selectedMember:Member;
   members:Member[];
@@ -37,12 +46,12 @@ export class MemberService {
   //   return this.http.get(`${baseUrl}/findone?id=${id}`).pipe(map(response => response));;
   // }
 
-  // addMember(data: any): Observable<any> {
-  //   console.log("i m in add member loop");
-  //   let url = `${this.baseUri}/members`;
-  //   return this.http.post(url, data).pipe(tap((dat:any)=>console.log(`Added with ID =${dat._id}`)),
-  //   catchError(this.errorMgmt));
-  // }
+  addMember(data: any): Observable<any> {
+    console.log("i m in add member loop",data);
+    let url = `${this.baseUri}/members`;
+    return this.http.post(url, data).pipe(tap((dat:any)=>console.log(`Added with ID =${dat._id}`)),
+    catchError(this.errorMgmt));
+  }
 
   // update(id: any, data: any): Observable<any> {
   //   console.log("i m in Update by ID function");
@@ -72,20 +81,20 @@ export class MemberService {
   // }
 
   
-  // // Error handling
-  // errorMgmt(error: HttpErrorResponse) {
-  //   let errorMessage = '';
-  //   if (error.error instanceof ErrorEvent) {
-  //     // Get client-side error
-  //     errorMessage = error.error.message;
-  //   } else {
-  //     // Get server-side error
-  //     errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-  //   }
-  //   console.log(errorMessage);
-  //   return throwError(() => {
-  //     return errorMessage;
-  //   });
-  // }
+  // Error handling
+  errorMgmt(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(() => {
+      return errorMessage;
+    });
+  }
 
 }
