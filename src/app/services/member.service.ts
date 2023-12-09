@@ -36,10 +36,10 @@ export class MemberService {
   members:Member[];
 
   
-  // getAll(): Observable<Member[]> {
-  //   console.log("i m in get all loop");
-  //   return this.http.get<Member[]>(baseUrl);
-  // }
+  getAll(): Observable<Member[]> {
+    console.log("i m in get all loop");
+    return this.http.get<Member[]>(baseUrl);
+  }
 
   // getMember(id: any): Observable<Member> {
   //   console.log("i m in get member by ID function");

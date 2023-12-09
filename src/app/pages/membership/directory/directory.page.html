@@ -1,10 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>directory</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
+
+<ion-content color="light" mode="ios">
+  <ion-searchbar placeholder='Search Member' animated="true" [debounce]="500" (ionInput)="handleInput($event)" animated>
+  </ion-searchbar>
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list [inset]="true" *ngFor="let m of filteredMembers ">
+    <div *ngIf="searchText ===''|| m.first_name.toLowerCase().includes(searchText) || m.mobile.toLowerCase().includes(searchText) || m.m_degree.toLowerCase().includes(searchText)|| m.email.toLowerCase().includes(searchText)"
+    >
+         <ion-item>
+          <ion-avatar class="custom-avatar" aria-hidden="true" slot="start">
+            <img [src]="forImagePath(m.image_path)">
+            </ion-avatar>
+         
+          <ion-label>
+            <strong>{{m.first_name}} {{m.last_name}} || {{m.degree_name}} || {{m.passout_year}}</strong><br />
+            <ion-text><ion-icon name="call"></ion-icon>{{m.mobile}} <ion-icon name="mail"></ion-icon> {{m.email}}</ion-text><br />
+            <ion-note color="medium" class="ion-text-wrap"><ion-icon name="briefcase"></ion-icon> {{m.employer}} || {{m.designation}}<ion-icon name="location"></ion-icon> {{m.current_city}} || {{m.current_pincode}}</ion-note>
+            
+          </ion-label>
+        </ion-item>
+    </div>
+  </ion-list>
+
    <ion-label>Use Two View 1. is Visiting Card view , other is I card Vertical view , with share button also </ion-label>
    <ion-label>Image , Name , Degree , Passout Year , Current Employer , Designation , Mobile , Whatsapp , business email, address</ion-label>
 </ion-content>

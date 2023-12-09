@@ -37,18 +37,7 @@ interface LocalFile {
   styleUrls: ['./memberform.page.scss'],
 })
 export class MemberformPage implements OnInit {
-
-  headers = new HttpHeaders()
-            .set('Content-Type','multipart/form-data');  
-
-  httpOptions = {
-    headers: this.headers,
-  };
-
-  @ViewChild(IonModal) modal: IonModal;
-  message = 'This modal example uses triggers to automatically open a modal when the button is clicked.';
-  name: string;
-
+   
   myForm!: FormGroup;
   selectedImage: any;
 
@@ -68,7 +57,7 @@ export class MemberformPage implements OnInit {
     // private navCtrl: NavController,
     private cd: ChangeDetectorRef,
     private plt: Platform,
-    private http: HttpClient,
+   
   ) { }
 
 
@@ -134,10 +123,10 @@ export class MemberformPage implements OnInit {
 
   async takePicture(){
     const image = await Camera.getPhoto({
-      quality: 90,
+      quality: 50,
       allowEditing: false,
       source: CameraSource.Prompt, // allow option to choose from galary or camera
-      width:600,
+      width:400,
 
       // resultType: CameraResultType.Base64, // Use Base64 for simplicity
       resultType: this.checkPlatformforWeb() ? CameraResultType.DataUrl : CameraResultType.Uri, // f0r PWA
