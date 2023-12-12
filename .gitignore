@@ -73,3 +73,4 @@ AndroidManifest.xml
 info.plist
 environment.ts
 environment.prod.ts
+.firebase
