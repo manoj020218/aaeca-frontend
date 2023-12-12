@@ -24,10 +24,14 @@ export class DirectoryPage implements OnInit {
   membersCopy: Member[] =[];
 
   searchField: FormControl;
-  searchTerm: string = '';
+  
 
   filteredMembers: any[];
   baseUri : string = environment.SERVER;
+
+  //*** for search */
+  searchTerm: string = '';
+  searchResults: any[] = [];
 
   public results = [...this.members];// to be used for search bar
 
@@ -67,6 +71,7 @@ export class DirectoryPage implements OnInit {
       console.log(res.slice());
       this.members=this.sortByLatest(res.slice());
       this.filteredMembers = this.members; // this filtermember array data is going at html page
+      
       loading.dismiss();
     }),err=>{
       console.log(err);
@@ -103,33 +108,53 @@ export class DirectoryPage implements OnInit {
 async handleInput(evt) {
   // this.getMembers();
   this.membersCopy = this.members;
-  const searchTerm = evt.srcElement.value;
-  if(!searchTerm) {
+  this.searchTerm = evt.srcElement.value;
+  if(!this.searchTerm) {
     this.getMembers();// if empty load default value
     return;}
-  
-  if(Array.isArray(this.membersCopy)){
-    this.filteredMembers = this.membersCopy.filter(member =>
-      member.first_name.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+  else{
+  this.search();
+    }
    
 }
   // const query = evt.target.value.toLowerCase();
   // this.results = this.members.m_name.filter((d) => d.toLowerCase().indexOf(query) > -1);
-}
 
 
-searchText:any = '';
 
-onSearchTextEntered(searchValue:any){
-this.searchText = searchValue;
-console.log(this.searchText);
-}
+// searchText:any = '';
+// <div *ngIf="searchText ===''|| m.first_name.toLowerCase().includes(searchText) || m.mobile.toLowerCase().includes(searchText) || m.m_degree.toLowerCase().includes(searchText)|| m.email.toLowerCase().includes(searchText)">
+// onSearchTextEntered(searchValue:any){
+// this.searchText = searchValue;
+// console.log(this.searchText);
+// }
 
 forImagePath(relpath:any){
  return this.baseUri+'/members/'+relpath;
 }
 
  
+search() {
+  this.memberApi.queryMembers(this.searchTerm).subscribe({
+    next:data=>{
+      this.searchResults = data;
+      console.log(this.searchResults);
+      this.filteredMembers = this.searchResults;
+    },
+    error:err=>{
+      this.presentToast(err);
+    }
+  });
+}
+
+	// Little helper
+	async presentToast(text) {
+		const toast = await this.toastCtrl.create({
+			message: text,
+			duration: 3000
+		});
+		toast.present();
+	}
+
 
 }

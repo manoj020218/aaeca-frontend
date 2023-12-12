@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IonModal, Platform } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 //camera and file system both together to handle image
@@ -42,6 +42,8 @@ export class MemberformPage implements OnInit {
   selectedImage: any;
 
   images: LocalFile[] = [];
+
+  
 
   constructor(    
     private formBuilder: FormBuilder,
@@ -106,14 +108,28 @@ export class MemberformPage implements OnInit {
       current_address: ['', [Validators.required,Validators.minLength(5),
         Validators.maxLength(200),]],
       // image: [''],
-      tc_1: ['', [Validators.required]],
-      tc_2: ['', [Validators.required]],
+      tc_1: [false],
+      tc_2: [false],
 
     });
   }
 
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} characters remaining`;
+  }
+
+  onCheckboxChangeTC1(event: any): void {
+    const isChecked = event.detail.checked;
+    this.myForm.patchValue({
+      tc_1: isChecked,
+    });
+  }
+
+  onCheckboxChangeTC2(event: any): void {
+    const isChecked = event.detail.checked;
+    this.myForm.patchValue({
+      tc_2: isChecked,
+    });
   }
 
   checkPlatformforWeb(){
@@ -162,6 +178,14 @@ export class MemberformPage implements OnInit {
     });
 
   }
+
+  
+
+  checkConditions(){
+    if(this.myForm.valid ){
+       
+    }
+  }
   
   onSubmit() {
     // console.log(this.myForm.value);
@@ -174,7 +198,10 @@ export class MemberformPage implements OnInit {
   //submit the form using formDat
   )
   
-  if(this.myForm.valid) {
+  if(!this.myForm.get('tc_1').value && !this.myForm.get('tc_2') ) {
+      console.log("t&c not accepted");
+      this.presentAlert ('!Alert','T & C not accepted.','Kindly accept conditions.');
+  } else if(this.myForm.valid && this.myForm.get('tc_1').value && this.myForm.get('tc_2')){
      // Convert base64 image to Blob
      const blob = this.dataURItoBlob(this.selectedImage);
      formData.append('image_path', blob, 'image.png');
@@ -224,14 +251,7 @@ export class MemberformPage implements OnInit {
   }
 
 
-	// Little helper
-	async presentToast(text) {
-		const toast = await this.toastCtrl.create({
-			message: text,
-			duration: 3000
-		});
-		toast.present();
-	}
+
   
 
 
@@ -248,5 +268,8 @@ export class MemberformPage implements OnInit {
 
     return new Blob([arrayBuffer], { type: mimeString });
   }
+
+
+ 
 
 }

@@ -181,14 +181,14 @@
 
               </ion-row>
               <ion-item>
-                <ion-checkbox formControlName="tc_1"labelPlacement="start"></ion-checkbox>
+                <ion-checkbox formControlName="tc_1" (ionChange)="onCheckboxChangeTC1($event)" labelPlacement="start"></ion-checkbox>
                 <ion-label class="ion-text-wrap">
                   I agree that the above data may be used to update the Alumni Association database. </ion-label>
 
               </ion-item>
 
               <ion-item>
-                <ion-checkbox formControlName="tc_2"labelPlacement="start"></ion-checkbox>
+                <ion-checkbox formControlName="tc_2" (ionChange)="onCheckboxChangeTC2($event)" labelPlacement="start"></ion-checkbox>
                 <ion-label class="ion-text-wrap">
                   I agree that the above data may be shared with Engineering College Ajmer.</ion-label>
 

@@ -1,7 +1,12 @@
 
 
 <ion-content color="light" mode="ios">
-  <ion-searchbar placeholder='Search Member' animated="true" [debounce]="500" (ionInput)="handleInput($event)" animated>
+  <ion-searchbar 
+  placeholder='Search Member' 
+  animated="true" [debounce]="500" 
+  (ionInput)="handleInput($event)"
+   
+  animated>
   </ion-searchbar>
 
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
@@ -9,8 +14,6 @@
   </ion-refresher>
 
   <ion-list [inset]="true" *ngFor="let m of filteredMembers ">
-    <div *ngIf="searchText ===''|| m.first_name.toLowerCase().includes(searchText) || m.mobile.toLowerCase().includes(searchText) || m.m_degree.toLowerCase().includes(searchText)|| m.email.toLowerCase().includes(searchText)"
-    >
          <ion-item>
           <ion-avatar class="custom-avatar" aria-hidden="true" slot="start">
             <img [src]="forImagePath(m.image_path)">
@@ -23,7 +26,6 @@
             
           </ion-label>
         </ion-item>
-    </div>
   </ion-list>
 
    <ion-label>Use Two View 1. is Visiting Card view , other is I card Vertical view , with share button also </ion-label>

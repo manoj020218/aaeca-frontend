@@ -69,16 +69,16 @@ export class MemberService {
   //   return this.http.delete(baseUrl).pipe(catchError(this.errorMgmt));
   // }
 
-  // queryMembers(searchstring: any): Observable<Member[]> {
-  //   // console.log("i m in wild search loop");
-  //   this.http.get<Member[]>(`${baseUrl}/accepted/${searchstring}`).subscribe(members=>this.allMembers$.next(members));
-  //   return this.watchAllMembers().pipe(catchError(this.errorMgmt));
-  // }
+  queryMembers(searchstring: any): Observable<Member[]> {
+    // console.log("i m in wild search loop");
+    this.http.get<Member[]>(`${baseUrl}/search?term=${searchstring}`).subscribe(members=>this.allMembers$.next(members));
+    return this.watchAllMembers().pipe(catchError(this.errorMgmt));
+  }
 
-  //  //to display all members of particular gym
-  //  watchAllMembers(): Observable<Member[]> {
-  //   return this.allMembers$.pipe(filter(maybe => !!maybe)); 
-  // }
+   //to display all members of particular gym
+   watchAllMembers(): Observable<Member[]> {
+    return this.allMembers$.pipe(filter(maybe => !!maybe)); 
+  }
 
   
   // Error handling
