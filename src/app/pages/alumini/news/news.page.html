@@ -9,6 +9,10 @@
 
 <ion-content [fullscreen]="true">
 
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
 
   <div>
 
@@ -138,7 +142,7 @@
     </ion-grid>
 
   </div>
-        <ion-card >
+  <ion-card >
           <img src="assets/logo/aaeca_logo.jpg" />
           <ion-card-header>
             <ion-card-title>Madison, WI</ion-card-title>
@@ -174,8 +178,9 @@
               </ion-tab-bar>
             </ion-tabs>
           </ion-toolbar>
-        </ion-card>     
+  </ion-card>     
     
+
     
      
 

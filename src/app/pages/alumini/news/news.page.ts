@@ -15,6 +15,13 @@ export class NewsPage implements OnInit {
   ngOnInit() {
   }
 
+  handleRefresh(event) {
+    setTimeout(() => {
+      // this.getMembers();
+      event.target.complete();
+    }, 2000);
+  };
+
 
   hide() {
     this.show = !this.show;
