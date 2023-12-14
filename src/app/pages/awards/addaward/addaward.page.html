@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-icon name="close-outline" (click)="cancel()"></ion-icon>
+    </ion-buttons>
+    <ion-title>Add Award/Achievement</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="home-outline" (click)="confirm()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content color=light class="ion-padding">
+  <div>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <ion-grid>
+        <ion-list>
+          <ion-row>
+            <ion-col size-md="6" size="12">
+              <ion-item>
+                <ion-input label="Title*" labelPlacement="stacked" placeholder="Enter Title*"
+                  formControlName="title"></ion-input>
+              </ion-item>
+
+            </ion-col>
+
+            <ion-col size-md="6" size="12">
+              <ion-item>
+                <ion-input label="URL" labelPlacement="stacked" placeholder="Enter Media Link URL"
+                  formControlName="url"></ion-input>
+              </ion-item>
+
+            </ion-col>
+         
+          </ion-row>
+
+          <ion-row>
+            <ion-col size-md="8" size="12">
+                <ion-item>
+                  <ion-textarea type="text" label="Content*" labelPlacement="stacked" placeholder="Enter in Detail"
+                    formControlName="content"></ion-textarea>
+                </ion-item>
+            </ion-col>
+            
+            <ion-col size-md="4" size="12">
+              <ion-item *ngIf="selectedImage">
+                <ion-label position="stacked">Selected Image</ion-label>
+                <img [src]="selectedImage" alt="Selected Image" style="max-width: 100%;">
+              </ion-item>
+
+              <ion-item>                   
+                <ion-button 
+                shape="round" 
+                expand="block" 
+                (click)="takePicture()">Upload Picture</ion-button>
+              </ion-item>
+              <ion-note>Image file should be less than 2 MB.</ion-note>
+            </ion-col>
+
+          </ion-row>
+        </ion-list>
+      </ion-grid>
+    </form>
+  </div>
+  <ion-button 
+  *ngIf="myForm.valid" 
+  shape="round" 
+  expand="full" 
+  type="submit" (click)="onSubmit()">Submit</ion-button>
+</ion-content>
