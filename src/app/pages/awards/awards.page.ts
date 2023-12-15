@@ -58,11 +58,12 @@ export class AwardsPage implements OnInit {
 }
 
   ngOnInit() {
+    // this.getAwards();
   }
 
 
-  async getMembers(){
-    console.log('get data from members list');
+  async getAwards(){
+    console.log('get data from award list');
     const loading = await this.loadingCtrl.create({
       message: 'Loading....'
     });
@@ -101,18 +102,18 @@ export class AwardsPage implements OnInit {
 
     handleRefresh(event) {
       setTimeout(() => {
-        this.getMembers();
+        this.getAwards();
         event.target.complete();
       }, 2000);
     };
 
     // for search bar 
 async handleInput(evt) {
-  // this.getMembers();
+  // this.getAwards();
   this.membersCopy = this.members;
   this.searchTerm = evt.srcElement.value;
   if(!this.searchTerm) {
-    this.getMembers();// if empty load default value
+    this.getAwards();// if empty load default value
     return;}
   else{
   this.search();

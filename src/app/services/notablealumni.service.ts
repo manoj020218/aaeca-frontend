@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
 
-
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, Observable, throwError,map,OperatorFunction, tap, BehaviorSubject, filter } from 'rxjs';
 import { News } from '../models/news';
 import { environment } from 'src/environments/environment.prod';
 
-const baseUrl = environment.SERVER+'/news';
-
+const baseUrl = environment.SERVER+'/notablealumni';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class NewsService {
-
+export class NotablealumniService {
   private allPosts$ = new BehaviorSubject<News[]>(undefined);
   // baseUri :string = 'http://localhost:3000/api/v1';
   baseUri : string = environment.SERVER;

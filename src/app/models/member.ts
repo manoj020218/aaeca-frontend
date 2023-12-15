@@ -20,6 +20,7 @@ export class Member {
     current_address?:string;
     current_pincode?:string;
     // image?:string;
+    category?:string;
     profile_completion?:string;
     approved_batchmat?:boolean;
     approved_secretary?:boolean;
