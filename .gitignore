@@ -68,7 +68,7 @@ testem.log
 Thumbs.db
 
 # Id , Password 
-/environments
+environments/
 AndroidManifest.xml
 info.plist
 environment.ts
