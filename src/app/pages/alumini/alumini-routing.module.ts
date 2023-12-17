@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'obituary',
     loadChildren: () => import('./obituary/obituary.module').then( m => m.ObituaryPageModule)
+  },
+  {
+    path: 'chapter',
+    loadChildren: () => import('./chapter/chapter.module').then( m => m.ChapterPageModule)
   }
 ];
 

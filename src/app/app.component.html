@@ -21,35 +21,67 @@
           </ion-label>
         </div>
       </ion-list>
+      <!-- *ngIf="!page?.route" -->
+      <!-- [autoHide]="false"  -->
 
-      <ion-menu-toggle 
-        class="menu-items" 
-        [autoHide]="false" 
-        *ngFor="let page of appPages; let i = index">
-        <ion-item 
-          *ngIf="!page?.route"
-          color="secondary" 
-          class="ion-padding-start"
-          lines="none" 
-          detail="false"
-          [routerLink]="[page.url]"
+      <div *ngFor="let page of appPages; let i = index"  >
+        <ion-menu-toggle *ngIf="page.url" class="menu-items" >
+          <ion-item 
+          [routerLink]="page.url"
           routerDirection="root"
-          routerLinkActive="selected">
-          <ion-icon slot="end" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
-          <ion-label>{{page.title}}</ion-label>
+          routerLinkActive="active"
+          lines="none" 
+          color="secondary" 
+          detail="false"
+          >
+          <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
+          <ion-label>{{page.title}}</ion-label> 
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-item
+        *ngIf="page.children?.length>0"
+        (click)="page.open = !page.open"
+        [class.active-parent]="page.open" 
+        lines="none" 
+        color="secondary" 
+        detail="false">
+        <ion-icon *ngIf='!page.open' slot="end" name="chevron-forward-outline"></ion-icon>
+        <ion-icon *ngIf='page.open' slot="end" name="chevron-down-outline"></ion-icon>
+        <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
+        <ion-label>{{page.title}}</ion-label> 
+
         </ion-item>
+
+        <ion-list *ngIf="page.open">
+          <ion-menu-toggle class="sub-item">
+            <ion-item 
+            class="ion-padding-start" 
+            lines="none" 
+            detail="false"
+            *ngFor="let sub of page.children"
+            [routerLink]="sub.url"
+            routerDirection="root"
+            routerLinkActive="active">
+            <ion-icon slot="start" [ios]="sub.icon + '-outline'" [md]="sub.icon + '-sharp'"></ion-icon>
+            <ion-label>{{sub.title}}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
         <ion-item 
           *ngIf="page?.route"
-          color="secondary" 
           class="ion-padding-start"
+          color="secondary" 
           lines="none" 
           detail="false"
           (click)="signOut()">
           <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
           <ion-label>{{page.title}}</ion-label>
         </ion-item>
-      </ion-menu-toggle>
+       </div>
     </ion-content>
+
     <ion-footer class="ion-no-border">
       <ion-toolbar color="secondary">
         <ion-item lines="none" color="secondary">
