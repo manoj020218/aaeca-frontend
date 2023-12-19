@@ -27,33 +27,42 @@ export class AppComponent {
     {title: 'Home',url: '/home', icon: 'home' ,submenue: false  },
     {title: 'About',
     // url: '/about',
-    icon: 'help' ,
+    icon: 'tv' ,
     submenue: true,
   children:[
-    {title: 'About',url: '/about', icon: 'home' },
-    {title: 'The Board',url: '/home', icon: 'home'},
-    {title: 'Constitution',url: '/home', icon: 'home'}
+    {title: 'About',url: '/about', icon: 'tv' },
+    {title: 'The Board',url: '/home', icon: 'medical'},
+    {title: 'Constitution',url: '/home', icon: 'reader'}
   ]   
 }, 
     
     
     {title: 'Alumni', 
     // url: '/alumini', 
-    icon: 'person', submenue: true ,
+    icon: 'leaf', submenue: true ,
     children:[
-      {title: 'Alumni',url: '/alumini', icon: 'home' },
-      {title: 'Chapter',url: '/alumini/chapter', icon: 'home'},
-      {title: 'Alumni News',url: '/alumini/news', icon: 'home'},
-      {title: 'Obituary',url: '/alumini/obituary', icon: 'home'},
+      {title: 'Alumni',url: '/alumini', icon: 'leaf' },
+      {title: 'Chapter',url: '/alumini/chapter', icon: 'globe'},
+      {title: 'Alumni News',url: '/alumini/news', icon: 'newspaper'},
+      {title: 'Obituary',url: '/alumini/obituary', icon: 'battery-dead'},
     ]   
   },
-    {title: 'Awards', url: '/awards', icon: 'information-circle',submenue: true},
-    {title: 'Donate', url: '/donate', icon: 'document-lock' ,submenue: false},
-    {title: 'Jobs', url:'/jobs', icon: 'log-out' ,submenue: false},
-    {title: 'Membership', url:'/membership', icon: 'log-out',submenue: true},
-    {title: 'Publications', url:'/publication', icon: 'log-out',submenue: false},
-    {title: 'Reunion', url:'/reunion', icon: 'log-out',submenue: true},    
-    {title: 'Team', url:'/team', icon: 'person',submenue: true},
+    {title: 'Awards', url: '/awards', icon: 'trophy',submenue: true},
+    {title: 'Donate', url: '/donate', icon: 'card' ,submenue: false},
+    {title: 'Jobs', url:'/jobs', icon: 'desktop' ,submenue: false},
+  {title: 'Membership', 
+    // url:'/membership', 
+    icon: 'person',submenue: true,
+    children:[
+      {title: 'Membership',url: '/membership', icon: 'person' },
+      {title: 'Directory',url: '/membership/directory', icon: 'id-card'},     
+    ]
+  },
+
+
+    {title: 'Publications', url:'/publication', icon: 'book',submenue: false},
+    {title: 'Reunion', url:'/reunion', icon: 'link',submenue: true},    
+    {title: 'Team', url:'/team', icon: 'people',submenue: true},
 
     {title: 'Sign Out', url: '', icon: 'log-out', route: true ,submenue: false},
     // {title: 'Team', url:'/team', icon: 'persons', route: true},
