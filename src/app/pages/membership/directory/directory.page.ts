@@ -69,7 +69,9 @@ export class DirectoryPage implements OnInit {
     this.loadMembers = this.memberApi.getAll()
     .subscribe(res=>{
       console.log(res.slice());
-      this.members=this.sortByLatest(res.slice());
+      this.members=this.sortByName(res.slice());
+      // this.members = res;
+      // console.log(res[0].image)
       this.filteredMembers = this.members; // this filtermember array data is going at html page
       
       loading.dismiss();
@@ -81,12 +83,16 @@ export class DirectoryPage implements OnInit {
     }
   
   
-    sortByLatest(members) {
+    sortByName(members) {
+      // Define a comparison function
       const byLatest = function (member1, member2) {
         return member1.first_name.localeCompare(member2.first_name);
       };
+    
+      // Create a shallow copy of the 'members' array and sort it using the comparison function
       return members.slice().sort(byLatest);
     }
+
   
     sortByEndDate(members){    
       const byLatest = function(member1,member2) {
@@ -130,6 +136,7 @@ async handleInput(evt) {
 // }
 
 forImagePath(relpath:any){
+  // console.log(this.baseUri+'/members/'+relpath);
  return this.baseUri+'/members/'+relpath;
 }
 
@@ -138,7 +145,7 @@ search() {
   this.memberApi.queryMembers(this.searchTerm).subscribe({
     next:data=>{
       this.searchResults = data;
-      console.log(this.searchResults);
+      // console.log(this.searchResults);
       this.filteredMembers = this.searchResults;
     },
     error:err=>{

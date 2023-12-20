@@ -19,7 +19,7 @@ export class Member {
     current_country?:string;
     current_address?:string;
     current_pincode?:string;
-    // image?:string;
+    image?:string;
     category?:string;
     profile_completion?:string;
     approved_batchmat?:boolean;

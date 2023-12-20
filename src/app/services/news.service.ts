@@ -48,8 +48,8 @@ export class NewsService {
   // }
 
   add(data: any): Observable<any> {
-    console.log("i m in add member loop",data);
-    let url = `${this.baseUri}/awards`;
+    console.log("i m in add news loop",data);
+    let url = `${this.baseUri}/news`;
     return this.http.post(url, data).pipe(tap((dat:any)=>console.log(`Added with ID =${dat._id}`)),
     catchError(this.errorMgmt));
   }

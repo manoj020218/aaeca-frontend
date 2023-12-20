@@ -74,13 +74,13 @@
                 </ion-col>
                 <ion-col size-md="4" size="12">
                   <ion-item>
-                    <ion-input type="text" label="Linkedin*" labelPlacement="stacked" placeholder="Linkedin Link"
+                    <ion-input type="text" label="Linkedin" labelPlacement="stacked" placeholder="Linkedin Link"
                       formControlName="linkedin"></ion-input>
                   </ion-item>
                 </ion-col>
                 <ion-col size-md="4" size="12">
                   <ion-item>
-                    <ion-input type="text" label="X handle*" labelPlacement="stacked" placeholder="X handle"
+                    <ion-input type="text" label="X handle" labelPlacement="stacked" placeholder="X handle"
                       formControlName="xhandle"></ion-input>
                   </ion-item>
                 </ion-col>
@@ -176,7 +176,7 @@
                     expand="block" 
                     (click)="takePicture()">Upload Picture</ion-button>
                   </ion-item>
-                  <ion-note>Image file should be less than 2 MB.</ion-note>
+                  <ion-note color="danger">Image file should be less than 2 MB.</ion-note>
                 </ion-col>
 
               </ion-row>
@@ -200,6 +200,7 @@
       </div>
       <ion-button 
       *ngIf="myForm.valid" 
+      color="secondary"
       shape="round" 
       expand="full" 
       type="submit" (click)="onSubmit()">Submit</ion-button>

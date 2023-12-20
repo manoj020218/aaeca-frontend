@@ -6,7 +6,7 @@ import { catchError, Observable, throwError,map,OperatorFunction, tap, BehaviorS
 import { Team } from '../models/team';
 import { environment } from 'src/environments/environment.prod';
 
-const baseUrl = environment.SERVER+'/awards';
+const baseUrl = environment.SERVER+'/teams';
 
 @Injectable({
   providedIn: 'root'

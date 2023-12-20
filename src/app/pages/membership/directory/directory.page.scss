@@ -1,4 +1,47 @@
 .custom-avatar {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
   }
+
+  ion-content {
+  >ion-searchbar {
+  }
+  >ion-refresher {
+    >ion-refresher-content {
+    }
+  }
+  >ion-list {
+    >ion-item {
+      >ion-avatar.custom-avatar {
+
+      
+        >img {
+        }
+      }
+      >ion-label {
+        >strong {
+          font: loto;
+          font-size: 12px;
+        }
+        >br:nth-of-type(1) {
+        }
+        >ion-text {
+          font-size: 10px;
+          >ion-icon:nth-of-type(1) {
+          }
+          >ion-icon:nth-of-type(2) {
+          }
+        }
+        >br:nth-of-type(2) {
+        }
+        >ion-note.ion-text-wrap {
+          font-size: 10px;
+          >ion-icon:nth-of-type(1) {
+          }
+          >ion-icon:nth-of-type(2) {
+          }
+        }
+      }
+    }
+  }
+}

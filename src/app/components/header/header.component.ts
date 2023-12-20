@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,10 @@ export class HeaderComponent  implements OnInit {
   @ViewChild('projectbtn', { read: ElementRef })projectbtn!: ElementRef;
   
 
-  constructor() { }
+  constructor(
+    public router :Router,
+    public route :ActivatedRoute,
+  ) { }
 
   ngOnInit() { }
 
@@ -66,4 +70,7 @@ export class HeaderComponent  implements OnInit {
   }
 
 
+  gotoHome(){
+    this.router.navigate(['/home'],{replaceUrl:true});  
+  }
 }

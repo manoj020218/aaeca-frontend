@@ -6,7 +6,7 @@ import { catchError, Observable, throwError,map,OperatorFunction, tap, BehaviorS
 import { Job } from '../models/job';
 import { environment } from 'src/environments/environment.prod';
 
-const baseUrl = environment.SERVER+'/awards';
+const baseUrl = environment.SERVER+'/jobs';
 
 
 @Injectable({
@@ -47,7 +47,7 @@ export class JobService {
 
   add(data: any): Observable<any> {
     console.log("i m in add member loop",data);
-    let url = `${this.baseUri}/awards`;
+    let url = `${this.baseUri}/jobs`;
     return this.http.post(url, data).pipe(tap((dat:any)=>console.log(`Added with ID =${dat._id}`)),
     catchError(this.errorMgmt));
   }
