@@ -1,9 +1,69 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login page</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
- 
+<ion-content [fullscreen]="true" >
+  <div id="bg">
+    <ion-fab vertical="bottom" edge horizontal="center" slot="fixed">
+      <ion-fab-button color="white" routerLink="/login">
+        <img src="assets/logo/logo_avatar.png">
+        <!-- <ion-icon name="close-outline" color="medium"></ion-icon> -->
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+
+  <form [formGroup] = "authForm" (ngSubmit)="signIn()">
+  <ion-list lines="none" class="ion-margin">
+    <ion-list-header>WELCOME !</ion-list-header>
+   
+
+    <ion-item class="item-has-focus ion-touched ion-valid" class="ion-margin">   
+      <ion-input labelPlacement="floating" label="Email ID" placeholder="Enter Email" formControlName="email" type="email" required></ion-input>
+    </ion-item>
+
+  
+
+    <ion-item class="item-has-focus ion-touched ion-valid" class="ion-margin">
+      <ion-input labelPlacement="floating" label="Password" placeholder="Enter Password" formControlName="password" type="password" required>
+     </ion-input>
+   </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size-sm="5"><ion-text color="medium">
+          <p class="ion-margin-horizontal"> <strong routerLink="/forgotpassword"> Forgot Password ?</strong></p>
+        </ion-text>
+      </ion-col>
+      <ion-col size-sm="5"><ion-text color="medium">
+          <p class="ion-margin-horizontal"> <strong routerLink="/membership/memberform"> Join Now?</strong></p>
+        </ion-text>
+      </ion-col>
+  
+    </ion-row>
+  </ion-grid>
+     
+
+    <div align="right">
+          
+        <ion-button  
+        type="submit" [disabled]="!authForm.valid"  
+        color="primary" shape="round" strong="true" class="ion-margin-end"
+        >SIGN IN
+        <ion-icon name="log-in" slot="end"></ion-icon></ion-button>
+
+    </div>
+  </ion-list> 
+   
+</form>
+
+<p class="ion-text-center" *ngIf="isLoading"> <ion-spinner></ion-spinner> </p>
+<!-- <div class="spin" *ngIf = waiting>
+  <ion-spinner name="bubbles"></ion-spinner>
+</div> -->
+
+<div *ngIf = "serverErrorMessage">
+  {{serverErrorMessage}}
+</div>
+
+
 </ion-content>
+
+
+

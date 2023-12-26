@@ -1,21 +1,26 @@
 <ion-header class="mobile-header">
-  <ion-toolbar color="secondary">
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button menu="myMenu"></ion-menu-button>
     </ion-buttons>
 
-    <ion-title class="ion-text-center" (click)="gotoHome()">
-      Alumni Association<br>
+    <ion-title color="primary" class="ion-text-center" (click)="gotoHome()">
+      <strong>Alumni Association</strong> <br>
       <ion-note>Engineering College Ajmer</ion-note>
        </ion-title>
     
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button routerLink="/login">
         <ion-icon slot="icon-only" name="log-in"></ion-icon>
       </ion-button>
     </ion-buttons>
 
+    <ion-avatar slot="start">
+      <img src="assets/logo/logo_avatar.png">
+    </ion-avatar>
+
   </ion-toolbar>
+  
 </ion-header>
 
 <ion-row class="header ion-align-items-center">
