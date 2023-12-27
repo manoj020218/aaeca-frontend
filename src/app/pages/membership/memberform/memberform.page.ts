@@ -188,7 +188,6 @@ export class MemberformPage implements OnInit {
   }
   
   onSubmit() {
-    // console.log(this.myForm.value);
     // transfer formbilder data to formData
     const formData = new FormData();
       Object.entries(this.myForm.value).forEach(
