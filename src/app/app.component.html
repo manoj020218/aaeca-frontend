@@ -11,7 +11,7 @@
         <div align="center">
           <ion-avatar>
             <!-- <img src="{{image}}" /> -->
-            <img src='./../../../assets/imgs/person.jpg' />
+            <img src="assets/logo/logo_avatar.png" />
           </ion-avatar>
           <ion-label color="white">
             {{username}}
@@ -26,38 +26,38 @@
 
       <div *ngFor="let page of appPages; let i = index"  >
         <ion-menu-toggle *ngIf="page.url" class="menu-items" >
-          <ion-item 
+          <ion-item
           [routerLink]="page.url"
           routerDirection="root"
           routerLinkActive="active"
-          lines="none" 
-          color="secondary" 
+          lines="none"
+          color="secondary"
           detail="false"
           >
           <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
-          <ion-label>{{page.title}}</ion-label> 
+          <ion-label>{{page.title}}</ion-label>
           </ion-item>
         </ion-menu-toggle>
 
         <ion-item
         *ngIf="page.children?.length>0"
         (click)="page.open = !page.open"
-        [class.active-parent]="page.open" 
-        lines="none" 
-        color="secondary" 
+        [class.active-parent]="page.open"
+        lines="none"
+        color="secondary"
         detail="false">
         <ion-icon *ngIf='!page.open' slot="end" name="chevron-forward-outline"></ion-icon>
         <ion-icon *ngIf='page.open' slot="end" name="chevron-down-outline"></ion-icon>
         <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>
-        <ion-label>{{page.title}}</ion-label> 
+        <ion-label>{{page.title}}</ion-label>
 
         </ion-item>
 
         <ion-list *ngIf="page.open">
           <ion-menu-toggle class="sub-item">
-            <ion-item 
-            class="ion-padding-start" 
-            lines="none" 
+            <ion-item
+            class="ion-padding-start"
+            lines="none"
             detail="false"
             *ngFor="let sub of page.children"
             [routerLink]="sub.url"
@@ -69,11 +69,11 @@
           </ion-menu-toggle>
         </ion-list>
 
-        <ion-item 
+        <ion-item
           *ngIf="page?.route"
           class="ion-padding-start"
-          color="secondary" 
-          lines="none" 
+          color="secondary"
+          lines="none"
           detail="false"
           (click)="signOut()">
           <ion-icon slot="start" [ios]="page.icon + '-outline'" [md]="page.icon + '-sharp'"></ion-icon>

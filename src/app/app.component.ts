@@ -20,7 +20,7 @@ export class AppComponent {
   submenue:boolean=false;
 
   currentPageTitle = 'Home';
-  
+
   menuType: string = 'reveal';
   public appPages: any[] =  [
     // {title: 'Account',url: '/login',icon: 'person'},
@@ -33,35 +33,35 @@ export class AppComponent {
     {title: 'About',url: '/about', icon: 'tv' },
     {title: 'The Board',url: '/home', icon: 'medical'},
     {title: 'Constitution',url: '/home', icon: 'reader'}
-  ]   
-}, 
-    
-    
-    {title: 'Alumni', 
-    // url: '/alumini', 
+  ]
+},
+
+
+    {title: 'Alumni',
+    // url: '/alumini',
     icon: 'leaf', submenue: true ,
     children:[
       {title: 'Alumni',url: '/alumini', icon: 'leaf' },
       {title: 'Chapter',url: '/alumini/chapter', icon: 'globe'},
       {title: 'Alumni News',url: '/alumini/news', icon: 'newspaper'},
       {title: 'Obituary',url: '/alumini/obituary', icon: 'battery-dead'},
-    ]   
+    ]
   },
     {title: 'Awards', url: '/awards', icon: 'trophy',submenue: true},
     {title: 'Donate', url: '/donate', icon: 'card' ,submenue: false},
     {title: 'Jobs', url:'/jobs', icon: 'desktop' ,submenue: false},
-  {title: 'Membership', 
-    // url:'/membership', 
+  {title: 'Membership',
+    // url:'/membership',
     icon: 'person',submenue: true,
     children:[
       {title: 'Membership',url: '/membership', icon: 'person' },
-      {title: 'Directory',url: '/membership/directory', icon: 'id-card'},     
+      {title: 'Directory',url: '/membership/directory', icon: 'id-card'},
     ]
   },
 
 
     {title: 'Publications', url:'/publication', icon: 'book',submenue: false},
-    {title: 'Reunion', url:'/reunion', icon: 'link',submenue: true},    
+    {title: 'Reunion', url:'/reunion', icon: 'link',submenue: true},
     {title: 'Team', url:'/team', icon: 'people',submenue: true},
 
     {title: 'Sign Out', url: '', icon: 'log-out', route: true ,submenue: false},
@@ -73,15 +73,15 @@ export class AppComponent {
   image: any;
 title: string|undefined;
 
-  
+
   constructor(
     private router: Router,
-    private menuCtrl: MenuController, 
+    private menuCtrl: MenuController,
     private plt: Platform
   ) {
     this.mobile ="7891012342";
-    this.loggeduser ="manoj020218@gmail.com";
-    this.username = "Manoj Jain"
+    this.loggeduser ="eca.alumnus@gmail.com";
+    this.username = "Alumni Association"
   }
 
   signOut(){

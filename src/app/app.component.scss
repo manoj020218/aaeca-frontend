@@ -23,7 +23,7 @@ ion-menu ion-content {
                 height: 10vh;
                 background: var(--ion-color-white);
                 margin-bottom: 5px;
-                border: 7px solid var(--ion-color-primary);
+                border: 2px solid var(--ion-color-primary);
             }
 
             ion-label {
@@ -41,13 +41,13 @@ ion-menu ion-content {
         }
         div {
             // border: 7px solid var(--ion-color-primary);
-            
+
 
         }
         ion-menu-toggle {
             margin: 5px;
             /* Adjust the value as needed */
-         }       
+         }
 
     }
 
@@ -72,7 +72,7 @@ ion-menu ion-content {
     .sub-item{
         padding-left: 20px;
         font-size: 14px;
-       ion-item.active{       
+       ion-item.active{
         --ion-text-color: var(--ion-color-primary);
         ion-icon{
             --ion-text-color-rgb:var(--ion-color-primary);
@@ -83,7 +83,7 @@ ion-menu ion-content {
     }
     }
 
-    
+
 }
 
 
