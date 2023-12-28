@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AwardsPage } from './awards.page';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
   {
     path: 'addaward',
     loadChildren: () => import('./addaward/addaward.module').then( m => m.AddawardPageModule)
+    // ,canActivate: [AuthGuard]
   }
 ];
 

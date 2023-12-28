@@ -15,9 +15,10 @@ import { environment } from 'src/environments/environment.prod';
 })
 
 export class UserService {
+  noAuthHeader = {headers: new HttpHeaders({'NoAuth':'True'})};
 
    // url:string= 'http://localhost:3000/api/v1'
- url:string= environment.SERVER;
+ url:string= environment.SERVER + '/user';
   token: any;
   isAuthenicated: boolean;
 
@@ -209,6 +210,21 @@ export class UserService {
     });
   }
 
+  forgetPassword(body:any): Observable<any> {
+    console.log(body);
+      let url = `${this.url}/forgot_password`;
+      console.log(url);
+      return this.http.post(url,body,this.noAuthHeader).pipe(tap((dat:any)=>console.log(`Found with=${dat._id}`)),
+      catchError(this.errorMgmt));
+  }
+  
+  forgetPasswordReset(body:any): Observable<any> {
+    console.log(body);
+      let url = `${this.url}/forgot_password/reset`;
+      console.log(url);
+      return this.http.post(url,body,this.noAuthHeader).pipe(tap((dat:any)=>console.log(`reset password =${dat._id}`)),
+      catchError(this.errorMgmt));
+  }
 
 
 

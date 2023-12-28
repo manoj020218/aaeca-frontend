@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { MembershipPage } from './membership.page';
 
+import { AuthGuard } from 'src/app/guards/auth.guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -11,6 +13,7 @@ const routes: Routes = [
   {
     path: 'directory',
     loadChildren: () => import('./directory/directory.module').then( m => m.DirectoryPageModule)
+    // ,canActivate: [AuthGuard]
   },
   {
     path: 'memberform',
