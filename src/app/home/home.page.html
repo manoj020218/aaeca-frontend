@@ -26,16 +26,19 @@
 
   </div>
 
-  <div class="body" class="ion-text-wrap">
-    <h2 class="heading" class="ion-text-left">
-      Alumni Association
-    </h2>
+  <div class="body" class="ion-text-wrap">   
+   
     <ion-list>
+      <ion-list-header>
+        <h2 class="heading" class="ion-text-left">
+          <strong>Alumni Association</strong>
+        </h2> 
+      </ion-list-header>
       <p>
         Engineering College Ajmer prides itself on the success of its alumni. After successfully completing their academic years at the institute, our alumni went on to expand their wings and reached new heights, be it as entrepreneurs, industrialists, academicians, researchers, social cause champions, bureaucrats etc. We have had many notable alumni who have received national and international recognition in their respective professional fields. With more than 5500 alumni spanning across the globe, they have been instrumental in strengthening the image of Engineering College Ajmer.
         </p>
       <p>
-        Though their dreams took them in new directions, ECA alumni have always felt connected to their alma mater and hence, they have over the years nurtured the institute through their generous contributions. The spirit of Giving Back is reflected in every corner of the institute be it infrastructure development, scholarships, especially to girl students, financial support to various hobby clubs, set-up of different R&D labs and faculty chairs, donations to various community development sectors, environment etc. Established in 31.08.2022, Alumni Association of ECA is an independent registered body of more than xxxx alumni spanning across the world. Its mission is –
+        Though their dreams took them in new directions, ECA alumni have always felt connected to their alma mater and hence, they have over the years nurtured the institute through their generous contributions. The spirit of Giving Back is reflected in every corner of the institute be it infrastructure development, scholarships, especially to girl students, financial support to various hobby clubs, set-up of different R&D labs and faculty chairs, donations to various community development sectors, environment etc. Established in 31.08.2022, Alumni Association of ECA is an independent registered body of more than 4000 alumni spanning across the world. Its mission is –
       </p>
       <p><strong>•</strong>To actively promote interaction & networking among its alumni.</p>
       <p><strong>•</strong>To be a pillar of support in their hour of need.
@@ -56,7 +59,8 @@
     </p>
 
   </div>
-  <div class="events">
+
+  <!-- <div class="topdonor">
     <h2 class="heading">
       Top Donor
     </h2>    
@@ -78,7 +82,7 @@
     </ion-grid>
 
   </div>
-  <div class="events">
+  <div class="news">
     <h2 class="heading">
       News
     </h2>    
@@ -102,7 +106,7 @@
             </p>
             <ion-toolbar class="tabs" *ngIf="show">
               <ion-tabs>
-                <!-- Tab bar -->
+                <!-- Tab bar --
                 <ion-tab-bar slot="bottom">
                   <ion-tab-button (click)="share()">
                     <ion-icon name="help-outline"></ion-icon>
@@ -142,7 +146,7 @@
             </p>
             <ion-toolbar class="tabs" *ngIf="show">
               <ion-tabs>
-                <!-- Tab bar -->
+                <!-- Tab bar --
                 <ion-tab-bar slot="bottom">
                   <ion-tab-button (click)="share()">
                     <ion-icon name="help-outline"></ion-icon>
@@ -182,7 +186,7 @@
             </p>
             <ion-toolbar class="tabs" *ngIf="show">
               <ion-tabs>
-                <!-- Tab bar -->
+                <!-- Tab bar --
                 <ion-tab-bar slot="bottom">
                   <ion-tab-button (click)="share()">
                     <ion-icon name="help-outline"></ion-icon>
@@ -207,17 +211,17 @@
       </ion-row>
     </ion-grid>
 
-  </div>
+  </div> -->
 
   <div class="reunion">
-    <h2>Glimps Of Reunion</h2>
+    <h2 color="primary"><strong>Glimps Of Reunion</strong></h2>
     <div class="banner">
       <app-banner [slides]="home_glimps_banner"></app-banner>
     </div>
   </div>
 
   <div class="contactus">
-    <h2 class="contact">Contact Us</h2>
+    <h2 class="contact" color="primary"><strong>Contact Us</strong></h2>
     <ion-grid>
       <ion-row>
         <ion-col size="12" size-sm="6">
@@ -313,11 +317,11 @@
         </ion-col>
 
         <ion-col size="12" size-sm="6">
-          <h3>We Are Located at</h3>
+          <h3><strong>We Are Located at</strong></h3>
           <p> Alumni Association office <br>
                 Room No. NB208<br>
                  Engineering College Ajmer<br>
-                  email: aaeca&#64;aaeca.com<br>
+                  email: admin&#64;alumnieca.org<br>
                   Phone: +917891012342 </p>
 
         </ion-col>
@@ -339,7 +343,7 @@
                color="primary" 
                (click)="shareViaFacebook()">
                    
-                  <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>
+                  <ion-icon color="primary" ios="logo-facebook" md="logo-facebook"></ion-icon>
             </button>
          </ion-item>
   
@@ -354,7 +358,7 @@
                color="primary" 
                (click)="shareViaInstagram()">
                  
-                  <ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon>
+                  <ion-icon color="primary" ios="logo-instagram" md="logo-instagram"></ion-icon>
             </button>
          </ion-item>
   
@@ -369,7 +373,7 @@
                color="primary" 
                (click)="shareViaTwitter()">
                    
-                  <ion-icon ios="logo-linkedin" md="logo-linkedin"></ion-icon>
+                  <ion-icon color="primary" ios="logo-youtube" md="logo-youtube"></ion-icon>
             </button>
          </ion-item>
   
@@ -384,7 +388,7 @@
                color="primary" 
                (click)="sharePicker()">
                    
-                  <ion-icon ios="ios-share" md="md-share"></ion-icon>
+                  <ion-icon color="primary" ios="ios-share" md="md-share"></ion-icon>
             </button>
          </ion-item>
         </ion-list>

@@ -68,3 +68,18 @@ ion-button{
     font-size:10px;
     font-weight: 600;
 }
+
+strong{
+  font-weight: bold;
+
+  color: blue;
+}
+
+// ion-icon.my-custom-color {
+//   color: #0000ff; /* Set your custom color using a HEX value */
+// }
+
+.custom-icon {
+  font-size: 50px; /* Set your custom size */
+  color: #0000ff; /* Set your custom color using a HEX value */
+}

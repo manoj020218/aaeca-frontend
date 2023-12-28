@@ -24,6 +24,8 @@ import { Alumni } from 'src/app/models/notablealumni';
   styleUrls: ['./alumini.page.scss'],
 })
 export class AluminiPage implements OnInit {
+
+  wip:boolean = false;
   selectedCategory = 'academy';
   items: Alumni[] =[];
 
