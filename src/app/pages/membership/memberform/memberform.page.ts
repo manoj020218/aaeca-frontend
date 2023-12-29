@@ -31,6 +31,9 @@ interface LocalFile {
 	data: string;
 }
 
+//for geolocation
+import { Geolocation } from '@capacitor/geolocation';
+
 @Component({
   selector: 'app-memberform',
   templateUrl: './memberform.page.html',
@@ -42,6 +45,19 @@ export class MemberformPage implements OnInit {
   selectedImage: any;
 
   images: LocalFile[] = [];
+
+  genders: string[] = ['Male', 'Female', 'Not to Say'];
+  selectedGender: string;
+
+  degrees: string[]=['B.E.','B.Tech','M.Tech','MCA','MBA'];
+  selectedDegree:string;
+
+  categories: string[]=['academy', 'enterpreneure', 'government','industrial','politics','renunciate','unemployed'];
+  selectedCategory:string;
+
+
+  current_lattitude: number;
+  current_longitude: number;
 
   
 
@@ -66,6 +82,7 @@ export class MemberformPage implements OnInit {
 
   ngOnInit() {
     this.membershipForm();
+    this.printCurrentPosition();
   }
 
   membershipForm(){
@@ -90,23 +107,20 @@ export class MemberformPage implements OnInit {
       xhandle: [''],
       employer: ['', [Validators.required, Validators.minLength(3)]],
       designation: ['', [Validators.required, Validators.minLength(3)]],
-      official_email: ['', [Validators.required,
-        // Validators.toLowerCase(),
-        Validators.minLength(5),
-        Validators.maxLength(80),
-        Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
-      ]],
+      official_email: [''],
       email: ['', [Validators.required,
         // Validators.toLowerCase(),
         Validators.minLength(5),
         Validators.maxLength(80),
         Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
       ]],
-      current_city: ['', [Validators.required, Validators.minLength(3)]],
-      current_country: ['', [Validators.required, Validators.minLength(3)]],
-      current_pincode: ['', [Validators.required, Validators.minLength(3)]],
-      current_address: ['', [Validators.required,Validators.minLength(5),
-        Validators.maxLength(200),]],
+      current_city: [''],
+      current_country: [''],
+      current_pincode: [''],
+      current_address: [''],
+      category:['',[Validators.required]],
+      current_lat:[this.current_lattitude],
+      current_long:[this.current_longitude],
       // image: [''],
       tc_1: [false],
       tc_2: [false],
@@ -213,8 +227,9 @@ export class MemberformPage implements OnInit {
         this.presentAlert('Thank You','Data Sent Successfully','We will Verify and Updata Data to DB');
         this.router.navigate(['/membership/directory'],{replaceUrl:true});
       },
-      error:err=>{
-        console.log(err);
+      error:error=>{
+        console.log(error);
+        this.presentToast(error);
       }
     })
  
@@ -250,7 +265,13 @@ export class MemberformPage implements OnInit {
   }
 
 
-
+  async printCurrentPosition(){
+    const coordinates = await Geolocation.getCurrentPosition();
+    this.current_lattitude = coordinates.coords.latitude;
+    this.current_longitude = coordinates.coords.longitude;
+  
+    console.log('Current position:', coordinates);
+  };
   
 
 
@@ -270,5 +291,16 @@ export class MemberformPage implements OnInit {
 
 
  
+//little helper
+// Little helper
+async presentToast(text) {
+  const toast = await this.toastCtrl.create({
+    message: text,
+    duration: 3000,
+    position: 'bottom',
+    color: 'dark', // Set the desired background color
+  });
+  toast.present();
+}
 
 }

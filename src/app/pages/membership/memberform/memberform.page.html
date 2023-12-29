@@ -3,10 +3,8 @@
     <ion-buttons slot="start">
       <ion-button (click)="cancel()">Cancel</ion-button>
     </ion-buttons>
-    <ion-title>Membership Form</ion-title>
-    <ion-buttons slot="end">
-      <ion-button type="submit" (click)="confirm()" [strong]="true">Confirm</ion-button>
-    </ion-buttons>
+    <ion-title class="ion-text-center">Membership Form</ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
@@ -51,9 +49,11 @@
 
                 <ion-col size-md="4" size="12">
                   <ion-item>
-                    <ion-input type="text" label="Degree Name*" labelPlacement="stacked" placeholder="Degree"
-                      formControlName="degree_name"></ion-input>
-                  </ion-item>
+                     
+                    <ion-select label="Degree"  formControlName="degree_name" placeholder="Select your degree" label-placement="floating">
+                      <ion-select-option *ngFor="let degree of degrees" [value]="degree">{{ degree }}</ion-select-option>
+                    </ion-select>
+                  </ion-item>                  
                 </ion-col>
 
                 <ion-col size-md="4" size="12">
@@ -68,9 +68,10 @@
               <ion-row>
                 <ion-col size-md="4" size="12">
                   <ion-item>
-                    <ion-input type="text" label="Gender*" labelPlacement="stacked" placeholder="Gender"
-                      formControlName="gender"></ion-input>
-                  </ion-item>
+                    <ion-select label="Gender" formControlName="gender" placeholder="Select your gender" label-placement="floating">
+                      <ion-select-option *ngFor="let gender of genders" [value]="gender">{{ gender }}</ion-select-option>
+                    </ion-select>
+                    </ion-item>
                 </ion-col>
                 <ion-col size-md="4" size="12">
                   <ion-item>
@@ -101,10 +102,12 @@
                   </ion-item>
                 </ion-col>
                 <ion-col size-md="4" size="12">
+
                   <ion-item>
-                    <ion-input type="email" label="Official Email*" labelPlacement="stacked"
-                      placeholder="Official Email" formControlName="official_email"></ion-input>
-                  </ion-item>
+                    <ion-select label="Job Sector" formControlName="category" placeholder="Your Job Sector" label-placement="floating">
+                      <ion-select-option *ngFor="let category of categories" [value]="category">{{ category }}</ion-select-option>
+                    </ion-select>
+                    </ion-item>
                 </ion-col>
 
               </ion-row>
@@ -132,26 +135,26 @@
               </ion-row>
 
               <ion-row>
-                <ion-col size-md="4" size="12">
+                <!-- <ion-col size-md="4" size="12">
                   <ion-item>
                     <ion-textarea type="text" label="Current Country*" labelPlacement="stacked" placeholder="Country"
                       formControlName="current_country"></ion-textarea>
                   </ion-item>
-                </ion-col>
+                </ion-col> -->
 
-                <ion-col size-md="4" size="12">
+                <!-- <ion-col size-md="4" size="12">
                   <ion-item>
                     <ion-textarea type="text" label="Current City*" labelPlacement="stacked" placeholder="City"
                       formControlName="current_city"></ion-textarea>
                   </ion-item>
-                </ion-col>
+                </ion-col> -->
 
-                <ion-col size-md="4" size="12">
+                <!-- <ion-col size-md="4" size="12">
                   <ion-item>
                     <ion-textarea type="text" label="Current City Pincode*" labelPlacement="stacked" placeholder="Current Pincode"
                       formControlName="current_pincode"></ion-textarea>
                   </ion-item>
-                </ion-col>
+                </ion-col> -->
 
               </ion-row>
 

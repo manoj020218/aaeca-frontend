@@ -19,6 +19,8 @@ export class Member {
     current_country?:string;
     current_address?:string;
     current_pincode?:string;
+    current_lat?:string;
+    current_long?:string;
     image?:string;
     category?:string;
     profile_completion?:string;

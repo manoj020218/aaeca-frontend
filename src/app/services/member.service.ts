@@ -47,7 +47,7 @@ export class MemberService {
   // }
 
   addMember(data: any): Observable<any> {
-    console.log("i m in add member loop",data);
+    // console.log("i m in add member loop",data);
     let url = `${this.baseUri}/members`;
     return this.http.post(url, data).pipe(tap((dat:any)=>console.log(`Added with ID =${dat._id}`)),
     catchError(this.errorMgmt));
@@ -89,7 +89,7 @@ export class MemberService {
       errorMessage = error.error.message;
     } else {
       // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.error.message}`;
     }
     console.log(errorMessage);
     return throwError(() => {
