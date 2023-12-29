@@ -2,6 +2,10 @@ import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController, Platform } from '@ionic/angular';
 import { register } from 'swiper/element/bundle';
+
+//for geolocation
+import { Geolocation } from '@capacitor/geolocation';
+
 register();
 
 
@@ -72,6 +76,8 @@ export class AppComponent {
   username: any;
   image: any;
 title: string|undefined;
+  current_lattitude: number;
+  current_longitude: number;
 
 
   constructor(
@@ -113,6 +119,17 @@ title: string|undefined;
   setTitle(title: any) {
     this.currentPageTitle = title
   }
+
+
+  async printCurrentPosition(){
+    const coordinates = await Geolocation.getCurrentPosition();
+    this.current_lattitude = coordinates.coords.latitude;
+    this.current_longitude = coordinates.coords.longitude;
+  
+    console.log('Current position:', coordinates);
+  };
+
+  //set location position to storage then use to fill form or update form data later on.
 
 
 }
