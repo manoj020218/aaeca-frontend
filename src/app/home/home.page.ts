@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import function to register Swiper custom elements
 import { register } from 'swiper/element/bundle';
+import { Browser } from '@capacitor/browser';
 // register Swiper custom elements
 register();
 
@@ -80,8 +81,8 @@ onSubmit() {
 
   }
 
-  shareViaInstagram(){
-// https://www.instagram.com/invites/contact/?i=12eltkk8yaypf&utm_content=qbso68c
+  async shareViaInstagram(){
+    await Browser.open({ url: 'https://www.instagram.com/eca_alumni?igsh=ZmpwcmN6NTg2eWRm' });    
   }
 
   shareViaTwitter(){

@@ -80,7 +80,7 @@ title: string|undefined;
     private plt: Platform
   ) {
     this.mobile ="7891012342";
-    this.loggeduser ="eca.alumnus@gmail.com";
+    this.loggeduser ="MyDost@alumnieca.org";
     this.username = "Alumni Association"
   }
 

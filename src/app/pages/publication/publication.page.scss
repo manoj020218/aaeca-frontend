@@ -1,0 +1,33 @@
+.right-aligned-image {
+    float: right;
+    margin-left: 10px; /* Adjust margin as needed */
+    size:100px;
+  }
+
+  
+
+// Common styles for both desktop and mobile
+ion-content {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+// Desktop styles (greater than 767px)
+@media (min-width: 768px) {
+  ion-content {
+  //   background-image: url('./../../../assets/imgs/wip.jpg');
+  --background: url('./../../../assets/imgs/wip.jpg') no-repeat center center fixed;
+  background-size: cover;
+  }
+}
+
+// Mobile styles (up to 767px)
+@media (max-width: 767px) {
+  ion-content {
+  //   background-image: url('./../../../assets/imgs/wip-m.jpg');
+  --background: url('./../../../assets/imgs/wip-m.jpg') no-repeat center center fixed;
+  background-size: cover;
+  }
+}
+  

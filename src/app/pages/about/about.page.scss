@@ -1,0 +1,37 @@
+// :host {
+//     display: block;
+//     height: 100vh; /* Set the height to 100% of the viewport height */
+//     background-image: url('./../../../assets/imgs/wip.jpg');
+//     background-size: cover; /* Cover the entire container with the image */
+//     background-position: center; /* Center the image */
+//   }
+
+//   ion-content {
+//     --background: url('./../../../assets/imgs/wip.jpg') no-repeat center center fixed;
+//     background-size: cover;
+//   }
+
+// Common styles for both desktop and mobile
+ion-content {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+  
+  // Desktop styles (greater than 767px)
+  @media (min-width: 768px) {
+    ion-content {
+    //   background-image: url('./../../../assets/imgs/wip.jpg');
+    --background: url('./../../../assets/imgs/wip.jpg') no-repeat center center fixed;
+    background-size: cover;
+    }
+  }
+  
+  // Mobile styles (up to 767px)
+  @media (max-width: 767px) {
+    ion-content {
+    //   background-image: url('./../../../assets/imgs/wip-m.jpg');
+    --background: url('./../../../assets/imgs/wip-m.jpg') no-repeat center center fixed;
+    background-size: cover;
+    }
+  }

@@ -13,14 +13,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="light" mode="ios">
+<ion-content mode="ios">
 
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
 
-  <div>
+  <div *ngIf="false">
   <ion-list [inset]="true" >
     <ion-grid>
       <ion-row *ngFor="let m of filterednews">

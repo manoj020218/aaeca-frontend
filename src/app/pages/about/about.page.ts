@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-about',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.page.scss'],
 })
 export class AboutPage implements OnInit {
+  backgroundImage: string;
 
-  constructor() { }
+  constructor(private platform: Platform) {}
 
   ngOnInit() {
+
+    this.backgroundImage = this.platform.is('desktop')
+      ? './../../../assets/imgs/wip.jpg'
+      : './../../../assets/imgs/wip-m.jpg';
+
   }
 
 }
