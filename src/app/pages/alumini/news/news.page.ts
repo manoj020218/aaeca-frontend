@@ -60,7 +60,7 @@ export class NewsPage implements OnInit {
     this.router.navigate(['/alumini/news/addnews'],{replaceUrl:true});
   }
 
-  // for search bar 
+  // for search bar
 async handleInput(evt) {
 // this.getMembers();
 this.membersCopy = this.newss;
@@ -71,30 +71,38 @@ if(!this.searchTerm) {
 else{
 this.search();
   }
- 
+
 }
 
 async getNews() {
     console.log('get data from newss list');
     const loading = await this.loadingCtrl.create({
-      message: 'Loading....'
+      message: 'Loading....',
+      duration: 5000, // Set the duration in milliseconds (e.g., 5000ms = 5 seconds)
     });
-    await loading.present();  
+    await loading.present();
+    // After the loading duration, navigate to the desired page
+  loading.onDidDismiss().then(() => {
+    this.presentToast("Nothing To Retrieve");
+    this.router.navigate(['/home']); // Replace '/other-page' with the actual route path
+  });
+
     this.loadnews = this.newsApi.getAll()
     .subscribe(res=>{
       console.log(res.slice());
       this.newss=this.sortByLatest(res.slice(),'creation_dt');
       // this.newss = res;
       // console.log(res[0].image)
-      this.filterednews = this.newss; // this filtermember array data is going at html page      
+      this.filterednews = this.newss; // this filtermember array data is going at html page
       loading.dismiss();
     }),err=>{
       console.log(err);
       loading.dismiss();
       }
-   
+
   }
-  
+
+
 
   sortByLatest(array: any[], datePropertyName: string): any[] {
     return array.sort((a, b) => {

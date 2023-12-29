@@ -62,9 +62,15 @@ export class DirectoryPage implements OnInit {
   async getMembers(){
     console.log('get data from members list');
     const loading = await this.loadingCtrl.create({
-      message: 'Loading....'
+      message: 'Loading....',
+      duration: 5000, // Set the duration in milliseconds (e.g., 5000ms = 5 seconds)
     });
     await loading.present();
+    // After the loading duration, navigate to the desired page
+  loading.onDidDismiss().then(() => {
+    this.presentToast("Nothing To Retrieve");
+    this.router.navigate(['/home']); // Replace '/other-page' with the actual route path
+  });
 
     this.loadMembers = this.memberApi.getAll()
     .subscribe(res=>{
