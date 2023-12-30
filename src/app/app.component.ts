@@ -75,7 +75,7 @@ export class AppComponent {
   mobile: string | undefined;
   username: any;
   image: any;
-title: string|undefined;
+  title: string|undefined;
   current_lattitude: number;
   current_longitude: number;
 
@@ -100,6 +100,7 @@ title: string|undefined;
   ngOnInit() {
     const width = this.plt.width();
     this.toggleMenu(width);
+    this.printCurrentPosition();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -125,6 +126,8 @@ title: string|undefined;
     const coordinates = await Geolocation.getCurrentPosition();
     this.current_lattitude = coordinates.coords.latitude;
     this.current_longitude = coordinates.coords.longitude;
+    localStorage.setItem('my_lat',this.current_lattitude.toString());
+    localStorage.setItem('my_long',this.current_longitude.toString());
   
     console.log('Current position:', coordinates);
   };

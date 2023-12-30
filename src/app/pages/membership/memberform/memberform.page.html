@@ -48,8 +48,7 @@
                 </ion-col>
 
                 <ion-col size-md="4" size="12">
-                  <ion-item>
-                     
+                  <ion-item>                     
                     <ion-select label="Degree"  formControlName="degree_name" placeholder="Select your degree" label-placement="floating">
                       <ion-select-option *ngFor="let degree of degrees" [value]="degree">{{ degree }}</ion-select-option>
                     </ion-select>
@@ -57,10 +56,32 @@
                 </ion-col>
 
                 <ion-col size-md="4" size="12">
-                  <ion-item>
+
+                  <!-- <ion-item>
                     <ion-input type="text" label="Passout Year*" labelPlacement="stacked" placeholder="Passout Year"
                       formControlName="passout_year"></ion-input>
+                  </ion-item> -->
+                  <ion-item>
+                    <ion-label labelPlacement="stacked"> Passout Year*   </ion-label> 
+                    <ion-datetime-button slot="end" datetime ="pyear" formControlName="passout_year" ngDefaultControl></ion-datetime-button>
                   </ion-item>
+            
+                  <ion-modal [keepContentsMounted]="true">
+                    <ng-template>
+                      <ion-datetime
+                      [min]="first_batch"
+                      [value]="start_Value"
+                      [showDefaultButtons]="true"
+                      presentation="year" 
+                      id="pyear"
+                      #pyear          
+                      (ionChange)="Pass_year($event)">
+                      <span slot="title">Select Passout Year</span>
+                    </ion-datetime>
+                    </ng-template>
+                  </ion-modal>
+            
+                         
                 </ion-col>
 
               </ion-row>

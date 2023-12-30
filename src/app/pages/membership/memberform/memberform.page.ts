@@ -58,6 +58,12 @@ export class MemberformPage implements OnInit {
 
   current_lattitude: number;
   current_longitude: number;
+  lat: any;
+  long: any;
+
+  first_batch:any="2000";
+  start_Value:any ="2010";
+  pass_year: any;
 
   
 
@@ -76,7 +82,10 @@ export class MemberformPage implements OnInit {
     private cd: ChangeDetectorRef,
     private plt: Platform,
    
-  ) { }
+  ) {
+    this.lat = localStorage.getItem('my_lat');
+    this.long = localStorage.getItem('my_long');
+   }
 
 
 
@@ -100,9 +109,9 @@ export class MemberformPage implements OnInit {
         Validators.minLength(10),
         Validators.maxLength(15),
         Validators.pattern('^[0-9+]*$')]],
-      degree_name: ['', [Validators.required, Validators.minLength(3)]],
-      passout_year: ['', [Validators.required, Validators.minLength(4)]],
-      gender: ['', [Validators.required, Validators.minLength(3)]],
+      degree_name: ['B.Tech', [Validators.required, Validators.minLength(3)]],
+      passout_year: [this.start_Value,[Validators.required, Validators.minLength(3)]],
+      gender: ['Male', [Validators.required, Validators.minLength(3)]],
       linkedin: [''],
       xhandle: [''],
       employer: ['', [Validators.required, Validators.minLength(3)]],
@@ -118,9 +127,9 @@ export class MemberformPage implements OnInit {
       current_country: [''],
       current_pincode: [''],
       current_address: [''],
-      category:['',[Validators.required]],
-      current_lat:[this.current_lattitude],
-      current_long:[this.current_longitude],
+      category:['industrial',[Validators.required]],
+      current_lat:[this.lat],
+      current_long:[this.long],
       // image: [''],
       tc_1: [false],
       tc_2: [false],
@@ -301,6 +310,15 @@ async presentToast(text) {
     color: 'dark', // Set the desired background color
   });
   toast.present();
+}
+
+async Pass_year(event){
+  console.log(event.detail.value);
+  // this.pass_year = this.start_Value;
+  this.pass_year = event.detail.value;
+  this.myForm.patchValue({
+    passout_year : this.pass_year
+  })
 }
 
 }
