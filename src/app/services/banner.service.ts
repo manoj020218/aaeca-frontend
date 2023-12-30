@@ -5,7 +5,7 @@ import { catchError, Observable, throwError,map,OperatorFunction, tap, BehaviorS
 import { Banner } from '../models/banner';
 import { environment } from 'src/environments/environment.prod';
 
-const baseUrl = environment.SERVER+'/banners';
+const baseUrl = environment.SERVER+'/images';
 
 
 @Injectable({
@@ -47,7 +47,7 @@ export class BannerService {
 
   add(data: any): Observable<any> {
     console.log("i m in add member loop",data);
-    let url = `${this.baseUri}/awards`;
+    let url = `${this.baseUri}/images/upload`;
     return this.http.post(url, data).pipe(tap((dat:any)=>console.log(`Added with ID =${dat._id}`)),
     catchError(this.errorMgmt));
   }
@@ -69,8 +69,8 @@ export class BannerService {
   // }
 
   query(searchstring: any): Observable<Banner[]> {
-    // console.log("i m in wild search loop");
-    this.http.get<Banner[]>(`${baseUrl}/search?term=${searchstring}`).subscribe(awards=>this.allPosts$.next(awards));
+    // search string like "purpose=home_top_banner"
+    this.http.get<Banner[]>(`${baseUrl}/search?${searchstring}`).subscribe(docs=>this.allPosts$.next(docs));
     return this.watchAll().pipe(catchError(this.errorMgmt));
   }
 

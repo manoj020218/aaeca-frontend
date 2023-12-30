@@ -7,6 +7,11 @@ import { Browser } from '@capacitor/browser';
 // register Swiper custom elements
 register();
 
+import { BannerService } from '../services/banner.service';
+import { environment } from 'src/environments/environment.prod';
+
+const baseUrl = environment.SERVER;
+
 
 @Component({
   selector: 'app-home',
@@ -32,6 +37,7 @@ export class HomePage {
 
   constructor(
     private formBuilder: FormBuilder,
+    private bannerApi : BannerService,
   ) {}
 
   ngOnInit() {
@@ -100,25 +106,26 @@ onSubmit() {
 
 
   callBanner(){
-    for (let i = 0; i <5; i++) {
-            // make array of image objects
-            this.home_top_banner.push(
-              {banner:`https://picsum.photos/id/${120+i}/1200/1200`}
-            );
-          };
+    // for (let i = 0; i <5; i++) {
+    //         // make array of image objects
+    //         this.home_top_banner.push(
+    //           {banner:`https://picsum.photos/id/${120+i}/1200/1200`}
+    //         );
+    //       };
 
-    // this.bannerApi.getImageByGymId("default_memberlist_page").subscribe({            
-    //   next:dat=>{
-    //     console.log(dat)
-    //     for (let i = 0; i <dat.length; i++) {
-    //       // make array of image objects
-    //       this.members_slides.push(
-    //         {banner:this.baseUri+'/images/'+dat[i].image_path}
-    //       );
-    //     };
-    //   },
-    //   error:err=>{ console.log(err)}
-    // });
+    this.bannerApi.query("purpose=home_top_banner").subscribe({            
+      next:dat=>{
+        console.log(dat)
+        for (let i = 0; i <dat.length; i++) {
+          // make array of image objects
+          this.home_top_banner.push(
+            {banner:baseUrl+'/images/'+dat[i].image_path}
+          );
+          console.log(baseUrl+'/images/'+dat[i].image_path);
+        };
+      },
+      error:err=>{ console.log(err)}
+    });
   
    }
 
