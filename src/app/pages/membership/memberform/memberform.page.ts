@@ -233,8 +233,11 @@ export class MemberformPage implements OnInit {
       next:res=>{
         console.log(res);
         // show aler
-        this.presentAlert('Thank You','Data Sent Successfully','We will Verify and Updata Data to DB');
-        this.router.navigate(['/membership/directory'],{replaceUrl:true});
+        this.presentAlert('Thank You','Data Sent Successfully','We will Verify and Update Data to DB');
+        // this.router.navigate(['/membership/directory'],{replaceUrl:true}); //only show this is user is logged in
+        this.router.navigate(['/home'],{replaceUrl:true});
+
+
       },
       error:error=>{
         console.log(error);
@@ -267,6 +270,11 @@ export class MemberformPage implements OnInit {
       buttons: ['OK'],
     });
     await alert.present();
+    // Automatically dismiss the alert after 5 seconds
+    setTimeout(() => {
+      alert.dismiss();
+    }, 5000);
+  
   }
 
   BacktoDirectory(){
