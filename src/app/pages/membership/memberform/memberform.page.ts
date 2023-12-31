@@ -211,6 +211,15 @@ export class MemberformPage implements OnInit {
   }
   
   onSubmit() {
+    //get data from locla storage and patch to form
+    this.lat = localStorage.getItem('my_lat');
+    this.long = localStorage.getItem('my_long');
+
+    this.myForm.patchValue({
+      current_lat : this.lat,
+      current_long: this.long
+    })
+    
     // transfer formbilder data to formData
     const formData = new FormData();
       Object.entries(this.myForm.value).forEach(

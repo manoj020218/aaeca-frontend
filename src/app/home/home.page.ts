@@ -55,6 +55,7 @@ export class HomePage {
     public router :Router,
     private toastCtrl: ToastController,
   ) {
+    //as soon as page open get this data
     this.lat = localStorage.getItem('my_lat');
     this.long = localStorage.getItem('my_long');
   }
@@ -87,6 +88,14 @@ customCounterFormatter(inputLength: number, maxLength: number) {
 }
 
 onSubmit() {
+  //as soon as submit button press get this data also fro local storage
+  this.lat = localStorage.getItem('my_lat');
+    this.long = localStorage.getItem('my_long');
+
+    this.myForm.patchValue({
+      current_lat : this.lat,
+      current_long: this.long
+    })
     // transfer formbilder data to formData
     const formData = new FormData();
       Object.entries(this.myForm.value).forEach(
@@ -98,14 +107,14 @@ onSubmit() {
 
   if (this.myForm.valid) {
     // Form is valid, handle the submission logic
-    console.log('Form submitted:', this.myForm.value);
+    // console.log('Form submitted:', this.myForm.value);
     this.suggestionApi.addSuggestion(this.myForm.value).subscribe({
       next:res=>{
-        console.log(res);
+        // console.log(res);
         this.presentAlert('Thank You','Received Successfully','We will Work on It');
         this.myForm.reset();
         // this.router.navigate(['/membership/directory'],{replaceUrl:true}); //only show this is user is logged in
-        this.router.navigate(['/home'],{replaceUrl:true});
+        // this.router.navigate(['/home'],{replaceUrl:true});
       },
       error:err=>{
         this.presentToast(err);
@@ -121,7 +130,7 @@ onSubmit() {
   }
 
   share() {
-    console.log('check');
+    // console.log('check');
   }
 
   shareViaFacebook(){
@@ -157,13 +166,13 @@ onSubmit() {
 
     this.bannerApi.query("purpose=home_top_banner").subscribe({
       next:dat=>{
-        console.log(dat)
+        // console.log(dat)
         for (let i = 0; i <dat.length; i++) {
           // make array of image objects
           this.home_top_banner.push(
             {banner:baseUrl+'/images/'+dat[i].image_path}
           );
-          console.log(baseUrl+'/images/'+dat[i].image_path);
+          // console.log(baseUrl+'/images/'+dat[i].image_path);
         };
       },
       error:err=>{ console.log(err)}
