@@ -10,6 +10,11 @@ register();
 import { BannerService } from '../services/banner.service';
 import { environment } from 'src/environments/environment.prod';
 
+//home page suggestion
+import {SuggestionService} from './../services/suggestion.service'
+import { AlertController, ToastController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+
 const baseUrl = environment.SERVER;
 
 
@@ -35,10 +40,24 @@ export class HomePage {
   myForm!: FormGroup;
   home_glimps_banner:any[] = [];
 
+  //for location get
+  current_lattitude: number;
+  current_longitude: number;
+  lat: any;
+  long: any;
+
   constructor(
     private formBuilder: FormBuilder,
     private bannerApi : BannerService,
-  ) {}
+    private suggestionApi : SuggestionService,
+    private alertCtrl: AlertController,
+    public route :ActivatedRoute,
+    public router :Router,
+    private toastCtrl: ToastController,
+  ) {
+    this.lat = localStorage.getItem('my_lat');
+    this.long = localStorage.getItem('my_long');
+  }
 
   ngOnInit() {
     this.callBanner();
@@ -57,7 +76,9 @@ queryForm(){
     // Define your form controls and their validation rules
     name: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
-    query: ['', [Validators.required, Validators.minLength(6)]],
+    message: ['', [Validators.required, Validators.minLength(6)]],
+    current_lat:[this.lat],
+    current_long:[this.long],
   });
 }
 
@@ -66,9 +87,28 @@ customCounterFormatter(inputLength: number, maxLength: number) {
 }
 
 onSubmit() {
+    // transfer formbilder data to formData
+    const formData = new FormData();
+      Object.entries(this.myForm.value).forEach(
+        ([key, value]: any[]) => {
+          formData.set(key, value);
+        }
+  //submit the form using formDat
+  )
+
   if (this.myForm.valid) {
     // Form is valid, handle the submission logic
     console.log('Form submitted:', this.myForm.value);
+    this.suggestionApi.add(this.myForm.value).subscribe({
+      next:res=>{
+        this.presentAlert('Thank You','Received Successfully','We will Work on It');
+        // this.router.navigate(['/membership/directory'],{replaceUrl:true}); //only show this is user is logged in
+        this.router.navigate(['/home'],{replaceUrl:true});
+      },
+      error:err=>{
+        this.presentToast(err);
+      }
+    })
   }
 }
 
@@ -88,7 +128,7 @@ onSubmit() {
   }
 
   async shareViaInstagram(){
-    await Browser.open({ url: 'https://www.instagram.com/eca_alumni?igsh=ZmpwcmN6NTg2eWRm' });    
+    await Browser.open({ url: 'https://www.instagram.com/eca_alumni?igsh=ZmpwcmN6NTg2eWRm' });
   }
 
   shareViaTwitter(){
@@ -101,7 +141,7 @@ onSubmit() {
   }
 
   shareViaEmail(){
-    
+
   }
 
 
@@ -113,7 +153,7 @@ onSubmit() {
     //         );
     //       };
 
-    this.bannerApi.query("purpose=home_top_banner").subscribe({            
+    this.bannerApi.query("purpose=home_top_banner").subscribe({
       next:dat=>{
         console.log(dat)
         for (let i = 0; i <dat.length; i++) {
@@ -126,7 +166,7 @@ onSubmit() {
       },
       error:err=>{ console.log(err)}
     });
-  
+
    }
 
    callGlimpsBanner(){
@@ -137,7 +177,7 @@ onSubmit() {
       );
     };
 
-// this.bannerApi.getImageByGymId("default_memberlist_page").subscribe({            
+// this.bannerApi.getImageByGymId("default_memberlist_page").subscribe({
 //   next:dat=>{
 //     console.log(dat)
 //     for (let i = 0; i <dat.length; i++) {
@@ -165,5 +205,30 @@ onSubmit() {
     this.currentIndex = (this.currentIndex + 1) % this.cards.length;
   }
 
-   
+  async presentAlert(header:string,subheader:string, message:string) {
+    const alert = await this.alertCtrl.create({
+      header:header,
+      subHeader: subheader,
+      message:message,
+      buttons: ['OK'],
+    });
+    await alert.present();
+    // Automatically dismiss the alert after 5 seconds
+    setTimeout(() => {
+      alert.dismiss();
+    }, 5000);
+
+  }
+
+  // Little helper
+async presentToast(text) {
+  const toast = await this.toastCtrl.create({
+    message: text,
+    duration: 3000,
+    position: 'bottom',
+    color: 'dark', // Set the desired background color
+  });
+  toast.present();
+}
+
 }

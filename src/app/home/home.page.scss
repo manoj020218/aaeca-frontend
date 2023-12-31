@@ -50,3 +50,14 @@ strong{
   font-weight: bold;
   color: blue;
 }
+
+ion-button{
+  --background: #000fff;
+  --background-hover: #1221f3;
+  --background-activated: #0004f78f;
+  --background-focused: #0a0785a1;
+
+      -webkit-box-shadow: 0 6px 4px -4px var(--ion-color-light);
+        -moz-box-shadow: 0 6px 4px -4px var(--ion-color-light);
+        box-shadow: 0 6px 4px -4px var(--ion-color-light);
+}
