@@ -231,7 +231,7 @@ export class MemberformPage implements OnInit {
     console.log('Form submitted:', this.myForm.value);
     this.memberApi.addMember(formData).subscribe({
       next:res=>{
-        console.log(res);
+        // console.log(res);
         // show aler
         this.presentAlert('Thank You','Data Sent Successfully','We will Verify and Update Data to DB');
         // this.router.navigate(['/membership/directory'],{replaceUrl:true}); //only show this is user is logged in

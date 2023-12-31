@@ -6,7 +6,7 @@ import { catchError, Observable, throwError,map,OperatorFunction, tap, BehaviorS
 import { Suggestion } from '../models/suggestion';
 import { environment } from 'src/environments/environment.prod';
 
-const baseUrl = environment.SERVER+'/suggestion';
+const baseUrl = environment.SERVER+'/suggestions';
 
 @Injectable({
   providedIn: 'root'
@@ -46,9 +46,9 @@ export class SuggestionService {
   //   return this.http.get(`${baseUrl}/findone?id=${id}`).pipe(map(response => response));;
   // }
 
-  add(data: any): Observable<any> {
-    // console.log("i m in add member loop",data);
-    let url = `${this.baseUri}/suggestions`;
+  addSuggestion(data: any): Observable<any> {    
+    let url = `${this.baseUri}/suggestions/`;
+    console.log(url,data);
     return this.http.post(url, data).pipe(tap((dat:any)=>console.log(`Added with ID =${dat._id}`)),
     catchError(this.errorMgmt));
   }

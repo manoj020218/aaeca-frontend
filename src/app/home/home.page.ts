@@ -99,9 +99,11 @@ onSubmit() {
   if (this.myForm.valid) {
     // Form is valid, handle the submission logic
     console.log('Form submitted:', this.myForm.value);
-    this.suggestionApi.add(this.myForm.value).subscribe({
+    this.suggestionApi.addSuggestion(this.myForm.value).subscribe({
       next:res=>{
+        console.log(res);
         this.presentAlert('Thank You','Received Successfully','We will Work on It');
+        this.myForm.reset();
         // this.router.navigate(['/membership/directory'],{replaceUrl:true}); //only show this is user is logged in
         this.router.navigate(['/home'],{replaceUrl:true});
       },
