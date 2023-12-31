@@ -230,14 +230,14 @@ export class MemberformPage implements OnInit {
   )
   
   if(!this.myForm.get('tc_1').value && !this.myForm.get('tc_2') ) {
-      console.log("t&c not accepted");
+      // console.log("t&c not accepted");
       this.presentAlert ('!Alert','T & C not accepted.','Kindly accept conditions.');
   } else if(this.myForm.valid && this.myForm.get('tc_1').value && this.myForm.get('tc_2')){
      // Convert base64 image to Blob
      const blob = this.dataURItoBlob(this.selectedImage);
      formData.append('image_path', blob, 'image.png');
     // Form is valid, handle the submission logic
-    console.log('Form submitted:', this.myForm.value);
+    // console.log('Form submitted:', this.myForm.value);
     this.memberApi.addMember(formData).subscribe({
       next:res=>{
         // console.log(res);

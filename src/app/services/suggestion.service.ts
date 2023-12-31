@@ -48,7 +48,7 @@ export class SuggestionService {
 
   addSuggestion(data: any): Observable<any> {    
     let url = `${this.baseUri}/suggestions/`;
-    // console.log(url,data);
+    console.log(url,data);
     return this.http.post(url, data).pipe(tap((dat:any)=>console.log(`Added with ID =${dat._id}`)),
     catchError(this.errorMgmt));
   }

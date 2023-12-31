@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment.prod';
 import {SuggestionService} from './../services/suggestion.service'
 import { AlertController, ToastController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 const baseUrl = environment.SERVER;
 
@@ -54,6 +55,7 @@ export class HomePage {
     public route :ActivatedRoute,
     public router :Router,
     private toastCtrl: ToastController,
+    private http: HttpClient,
   ) {
     //as soon as page open get this data
     this.lat = localStorage.getItem('my_lat');
@@ -96,30 +98,33 @@ onSubmit() {
       current_lat : this.lat,
       current_long: this.long
     })
-    // transfer formbilder data to formData
-    const formData = new FormData();
-      Object.entries(this.myForm.value).forEach(
-        ([key, value]: any[]) => {
-          formData.set(key, value);
-        }
-  //submit the form using formDat
-  )
 
   if (this.myForm.valid) {
     // Form is valid, handle the submission logic
     // console.log('Form submitted:', this.myForm.value);
-    this.suggestionApi.addSuggestion(this.myForm.value).subscribe({
-      next:res=>{
-        // console.log(res);
-        this.presentAlert('Thank You','Received Successfully','We will Work on It');
+    let url= 'https://backend.jenix.in/api/v1/suggestions/'
+    this.http.post(url, this.myForm.value).subscribe({
+      next:(res)=>{
+        this.presentAlert("Thank You","Submitted Successfully","We Will Contact you soon");
         this.myForm.reset();
-        // this.router.navigate(['/membership/directory'],{replaceUrl:true}); //only show this is user is logged in
-        // this.router.navigate(['/home'],{replaceUrl:true});
       },
-      error:err=>{
+      error:(err)=>{
         this.presentToast(err);
       }
     })
+    //as serviceAPI not working properly
+    // this.suggestionApi.addSuggestion(this.myForm.value).subscribe({
+    //   next:(res)=>{
+    //     console.log(res);
+    //     this.presentAlert('Thank You','Received Successfully','We will Work on It');
+    //     this.myForm.reset();
+    //     // this.router.navigate(['/membership/directory'],{replaceUrl:true}); //only show this is user is logged in
+    //     // this.router.navigate(['/home'],{replaceUrl:true});
+    //   },
+    //   error:(err)=>{
+    //     this.presentToast(err);
+    //   }
+    // })
   }
 }
 
